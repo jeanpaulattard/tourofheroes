@@ -1,1 +1,6 @@
 .idea/
+node_modules/
+typings/
+*.js
+*.js.map
+!systemjs.config.js
