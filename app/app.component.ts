@@ -2,11 +2,8 @@
  * Created by jean-paul.attard on 11/08/2016.
  */
 import { Component } from '@angular/core';
-
-export class Hero {
-    id: number;
-    name: string;
-}
+import { HeroDetailsComponent } from './herodetails/herodetail.component';
+import { Hero } from './objects/hero';
 
 @Component({
     selector: 'my-app',
@@ -18,16 +15,9 @@ export class Hero {
                 <span class="badge">{{hero.id}}</span> {{hero.name}}
             </li>
         </ul>
-        <div *ngIf="selectedHero">
-            <h2>{{selectedHero.name}} details!</h2>
-            <div><label>id: </label>{{selectedHero.id}}</div>
-            <div>
-                <label>name: </label>
-                <input [(ngModel)]="selectedHero.name" placeholder="name">
-            </div>
-        </div>
+        <hero-details [hero]="selectedHero"></hero-details>
     `,
-    styles: [`
+    styles: [ `
          .selected {
             background-color: #CFD8DC !important;
             color: white;
@@ -75,7 +65,7 @@ export class Hero {
             margin-right: .8em;
             border-radius: 4px 0 0 4px;
           }
-    `]
+    ` ]
 })
 
 export class AppComponent {
@@ -85,6 +75,7 @@ export class AppComponent {
     expandHero(hero: Hero) {
         this.selectedHero = hero;
     }
+
     public heroes = HEROES;
 }
 
