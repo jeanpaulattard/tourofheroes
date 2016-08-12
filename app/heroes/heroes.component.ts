@@ -15,8 +15,7 @@ import { HeroService } from '../services/hero.service';
             <li *ngFor="let hero of heroes" (click)="expandHero(hero)" [class.selected]="hero === selectedHero">
                 <span class="badge">{{hero.id}}</span> {{hero.name}}
             </li>
-        </ul>
-        <hero-details [hero]="selectedHero"></hero-details>`,
+        </ul>`,
     styles: [ `
           .selected {
             background-color: #CFD8DC !important;
