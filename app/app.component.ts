@@ -1,9 +1,11 @@
 /**
  * Created by jean-paul.attard on 11/08/2016.
  */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
 import { HeroDetailsComponent } from './herodetails/herodetail.component';
 import { Hero } from './objects/hero';
+import { HeroService } from './services/hero.service';
 
 @Component({
     selector: 'my-app',
@@ -65,30 +67,29 @@ import { Hero } from './objects/hero';
             margin-right: .8em;
             border-radius: 4px 0 0 4px;
           }
-    ` ]
+    ` ],
+    providers: [ HeroService ]
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+    constructor(private heroService: HeroService) {}
 
     selectedHero: Hero;
+    public heroes: Hero[];
 
     expandHero(hero: Hero) {
         this.selectedHero = hero;
     }
 
-    public heroes = HEROES;
+    getHeroes() {
+        this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    }
+
+    ngOnInit() {
+        this.getHeroes();
+    }
 }
 
-const HEROES: Hero[] = [
-    { id: 11, name: 'Spider man' },
-    { id: 12, name: 'Bat Man' },
-    { id: 13, name: 'Super Man' },
-    { id: 14, name: 'Ent Man' },
-    { id: 15, name: 'Iron Man' },
-    { id: 16, name: 'Captain America' },
-    { id: 17, name: 'Black Widow' },
-    { id: 18, name: 'The Hulk' },
-    { id: 19, name: 'Hawk Eye' },
-    { id: 20, name: 'Green Lantern' }
-];
+
 
