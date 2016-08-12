@@ -7,10 +7,11 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeroDetailsComponent } from './herodetails/herodetail.component'
+import { HeroesComponent } from './heroes/heroes.component';
 
 @NgModule({
     imports: [ BrowserModule, FormsModule ],
-    declarations: [ AppComponent, HeroDetailsComponent ],
+    declarations: [ AppComponent, HeroesComponent, HeroDetailsComponent ],
     bootstrap: [ AppComponent ]
 })
 
