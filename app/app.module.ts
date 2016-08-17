@@ -15,12 +15,13 @@ import { HeroService } from './services/hero.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroSearchComponent } from './herosearch/hero-search.component';
 
 import { routing } from './app.routing';
 
 @NgModule({
     imports: [ BrowserModule, FormsModule, routing, HttpModule ],
-    declarations: [ AppComponent, HeroesComponent, HeroDetailsComponent, DashboardComponent ],
+    declarations: [ AppComponent, HeroesComponent, HeroDetailsComponent, DashboardComponent, HeroSearchComponent ],
     bootstrap: [ AppComponent ],
     providers: [
         HeroService,
