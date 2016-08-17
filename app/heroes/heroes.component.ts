@@ -19,6 +19,8 @@ export class HeroesComponent implements OnInit {
 
     selectedHero: Hero;
     public heroes: Hero[];
+    addingHero: boolean = false;
+    error: any;
 
     expandHero(hero: Hero) {
         this.selectedHero = hero;
@@ -31,6 +33,29 @@ export class HeroesComponent implements OnInit {
 
     getHeroes() {
         this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    }
+
+    addHero() {
+        this.addingHero = true;
+        this.selectedHero = null;
+    }
+
+    deleteHero(hero: Hero, event: any) {
+        event.stopPropagation();
+        this.heroService.delete(hero).then(response => {
+            this.heroes = this.heroes.filter(h => h !== hero);
+            if (this.selectedHero === hero) {
+                this.selectedHero = null;
+            }
+        }).catch(error => this.error = error);
+    }
+
+    // Call back for when the hero is persisted; notified from the hero details component
+    close(callBackHero: Hero) {
+        this.addingHero = false;
+        if (callBackHero) {
+            this.getHeroes();
+        }
     }
 
     ngOnInit() {
