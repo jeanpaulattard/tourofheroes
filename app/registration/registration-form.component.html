@@ -10,8 +10,7 @@
     <div class="form-group">
         <label for="surname">Surname</label>
         <input #surname="ngModel" type="text" class="form-control" id="surname" name="surname" required
-               [(ngModel)]="model.surname"
-               [class.form-error]="surname.dirty && surname.invalid">
+               [(ngModel)]="model.surname" [class.form-error]="surname.dirty && surname.invalid">
     </div>
     <div class="form-group">
         <label for="favouriteHero">Favourite Hero</label>
