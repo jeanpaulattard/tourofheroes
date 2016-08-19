@@ -3,5 +3,5 @@
  */
 
 export class RegisteredUser {
-    constructor(name: string, surname: string, favouriteHero: string, favouritePower?: string) {}
+    constructor(public name: string, public surname: string, public favouriteHero: string, public favouritePower?: string) {}
 }

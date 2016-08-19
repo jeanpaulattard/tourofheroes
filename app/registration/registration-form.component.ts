@@ -21,6 +21,5 @@ export class RegistrationFormComponent {
 
     register() {
         this.save.emit(new RegisteredUser(this.model.name, this.model.surname, this.model.favouriteHero, this.model.favouritePower));
-        this.model = new RegistrationModel();
     }
 }
