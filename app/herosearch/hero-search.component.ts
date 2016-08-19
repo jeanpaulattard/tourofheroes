@@ -25,6 +25,7 @@ import 'rxjs/add/operator/catch';
 export class HeroSearchComponent implements OnInit {
 
     heroes: Observable<Hero[]>;
+    searchHistory: string[] = [];
     private searchTerms = new Subject<string>();
 
     constructor(private router: Router,
@@ -33,6 +34,10 @@ export class HeroSearchComponent implements OnInit {
     // Push a search term into the observable stream.
     search(term: string) {
         this.searchTerms.next(term);
+    }
+
+    alertApp(value: string) {
+        this.searchHistory.push(value);
     }
 
     gotoDetails(hero: Hero) {

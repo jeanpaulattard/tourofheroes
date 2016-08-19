@@ -1,9 +1,17 @@
 <div id="search-component">
     <h4>Hero Search!</h4>
-    <input #searchBox id="search-box" (keyup)="search(searchBox.value)"/>
+    <input #searchBox id="search-box" (keyup)="search(searchBox.value)"
+           (keyup.enter)="alertApp(searchBox.value)"/>
+    <p>{{searchBox.value}}</p>
     <div>
         <div *ngFor="let hero of heroes | async" (click)="gotoDetails(hero)" class="search-result">
             {{hero.name}}
         </div>
     </div>
+</div>
+<div id="search-history">
+    <h4>Search History</h4>
+    <ul>
+        <li *ngFor="let history of searchHistory">{{history}}</li>
+    </ul>
 </div>
