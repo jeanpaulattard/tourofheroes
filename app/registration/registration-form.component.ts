@@ -11,6 +11,9 @@ import { RegistrationModel } from './registration.model';
 })
 export class RegistrationFormComponent {
 
+    powers: string[] = [ 'Moon Walk', 'Spidy Senses', 'Super Hearing', 'Long Jump', 'Deep Voice', 'Super Strength',
+                         'X-ray Vision' ];
+
     model: RegistrationModel = new RegistrationModel();
 
     // TODO: Remove this when we're done
