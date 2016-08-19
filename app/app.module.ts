@@ -18,10 +18,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './herosearch/hero-search.component';
 
 import { routing } from './app.routing';
+import { RegistrationFormComponent } from './registration/registration-form.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
     imports: [ BrowserModule, FormsModule, routing, HttpModule ],
-    declarations: [ AppComponent, HeroesComponent, HeroDetailsComponent, DashboardComponent, HeroSearchComponent ],
+    declarations: [ AppComponent, HeroesComponent, HeroDetailsComponent, DashboardComponent, HeroSearchComponent,
+                    RegistrationComponent, RegistrationFormComponent ],
     bootstrap: [ AppComponent ],
     providers: [
         HeroService,

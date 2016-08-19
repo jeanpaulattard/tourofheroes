@@ -7,6 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HeroesComponent } from './heroes/heroes.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroDetailsComponent } from './herodetails/herodetail.component';
+import { RegistrationFormComponent } from './registration/registration-form.component';
 
 const appRoutes: Routes = [
     {
@@ -25,6 +26,10 @@ const appRoutes: Routes = [
     {
         path: 'details/:id',
         component: HeroDetailsComponent
+    },
+    {
+        path: 'registration',
+        component: RegistrationFormComponent
     }
 ];
 
