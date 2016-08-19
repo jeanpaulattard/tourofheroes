@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="name">Name</label>
         <input #name="ngModel" type="text" class="form-control" id="name" name="name" required [(ngModel)]="model.name"
-               [ngClass]="{'form-error': name.dirty && name.invalid}">
+               [class.form-error]="name.dirty && name.invalid">
         <div *ngIf="name.dirty && name.invalid" class="alert alert-danger">
             Name is required
         </div>
@@ -11,17 +11,17 @@
         <label for="surname">Surname</label>
         <input #surname="ngModel" type="text" class="form-control" id="surname" name="surname" required
                [(ngModel)]="model.surname"
-               [ngClass]="{'form-error': surname.dirty && surname.invalid}">
+               [class.form-error]="surname.dirty && surname.invalid">
     </div>
     <div class="form-group">
         <label for="favouriteHero">Favourite Hero</label>
         <input #favhero="ngModel" type="text" class="form-control" id="favouriteHero" name="favouriteHero" required
-               [(ngModel)]="model.favouriteHero" [ngClass]="{'form-error': favhero.dirty && favhero.invalid}">
+               [(ngModel)]="model.favouriteHero" [class.form-error]="favhero.dirty && favhero.invalid">
     </div>
     <div class="form-group">
         <label for="favouritePower">Favourite Power</label>
         <select #favpower="ngModel" class="form-control" id="favouritePower" name="favouritePower"
-                [(ngModel)]="model.favouritePower" [ngClass]="{'form-error': favpower.dirty && favpower.invalid}">
+                [(ngModel)]="model.favouritePower" [class.form-error]="favpower.dirty && favpower.invalid">
             <option *ngFor="let power of powers" [value]="power">{{power}}</option>
         </select>
     </div>
