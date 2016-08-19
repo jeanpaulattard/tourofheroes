@@ -2,8 +2,9 @@
  * Created by jean-paul.attard on 19/08/2016.
  */
 
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { RegistrationModel } from './registration.model';
+import { RegisteredUser } from './registered-user';
 
 @Component({
     selector: 'registration-form',
@@ -16,6 +17,10 @@ export class RegistrationFormComponent {
 
     model: RegistrationModel = new RegistrationModel();
 
-    // TODO: Remove this when we're done
-    get diagnostic() { return JSON.stringify(this.model); }
+    @Output() save = new EventEmitter();
+
+    register() {
+        this.save.emit(new RegisteredUser(this.model.name, this.model.surname, this.model.favouriteHero, this.model.favouritePower));
+        this.model = new RegistrationModel();
+    }
 }
