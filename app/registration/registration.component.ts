@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
 import { RegisteredUser } from './registered-user';
 
 @Component({
-    templateUrl: 'app/registration/registration.component.html'
+    moduleId: module.id,
+    templateUrl: 'registration.component.html'
 })
 export class RegistrationComponent {
 

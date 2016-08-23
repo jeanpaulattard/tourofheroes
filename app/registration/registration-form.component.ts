@@ -5,10 +5,12 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { RegistrationModel } from './registration.model';
 import { RegisteredUser } from './registered-user';
+import { FormGroup } from '@angular/forms';
 
 @Component({
+    moduleId: module.id,
     selector: 'registration-form',
-    templateUrl: 'app/registration/registration-form.component.html'
+    templateUrl: 'registration-form.component.html'
 })
 export class RegistrationFormComponent {
 
@@ -19,7 +21,8 @@ export class RegistrationFormComponent {
 
     @Output() save = new EventEmitter();
 
-    register() {
+    register(form: FormGroup) {
         this.save.emit(new RegisteredUser(this.model.name, this.model.surname, this.model.favouriteHero, this.model.favouritePower));
+        form.reset();
     }
 }
