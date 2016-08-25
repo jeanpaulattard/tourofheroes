@@ -18,9 +18,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './herosearch/hero-search.component';
 
 import { routing } from './app.routing';
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
-    imports: [ BrowserModule, FormsModule, HttpModule, routing ],
+    imports: [ BrowserModule, FormsModule, HttpModule, routing, SharedModule.forRoot() ],
     declarations: [ AppComponent, DashboardComponent, HeroesComponent, HeroDetailsComponent,  HeroSearchComponent ],
     bootstrap: [ AppComponent ],
     providers: [
