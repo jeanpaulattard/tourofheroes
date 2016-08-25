@@ -4,32 +4,16 @@
 import { Injectable } from '@angular/core';
 
 import { AuthenticationService } from '../../shared/services/authentication.service';
-import { LocalStorageService } from '../../shared/services/local-storage.service';
-import { RegisteringUser } from './registering-user';
-import { RegisteredUsers } from './registered-users';
+import { RegisteringUser } from '../../shared/registering-user';
+import { UsersService } from '../../shared/services/users.service';
 
 @Injectable()
 export class RegistrationService {
 
-    private registeredUsersKey = 'registeredUsers';
-
-    constructor(private localStorageService: LocalStorageService, private authenticationService: AuthenticationService) {}
+    constructor(private usersService: UsersService, private authenticationService: AuthenticationService) {}
 
     register(user: RegisteringUser) {
-        var users = this.getRegisteredUsers();
-
-        if (users) {
-            users.users.push(user);
-        } else {
-            users = new RegisteredUsers;
-            users.users.push(user);
-        }
-
-        this.localStorageService.putObject(this.registeredUsersKey, users);
+        this.usersService.addUserToUsers(user);
         this.authenticationService.setAuthenticationToken(user.name + user.surname + user.password);
-    }
-
-    private getRegisteredUsers(): RegisteredUsers {
-        return <RegisteredUsers>this.localStorageService.getObject(this.registeredUsersKey);
     }
 }

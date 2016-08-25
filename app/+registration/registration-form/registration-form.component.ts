@@ -6,7 +6,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { RegistrationFormModel } from './registration-form.model';
-import { RegisteringUser } from "../shared/registering-user";
+import { RegisteringUser } from "../../shared/registering-user";
 
 @Component({
     moduleId: module.id,

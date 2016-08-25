@@ -5,7 +5,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { RegisteringUser } from "./shared/registering-user";
+import { RegisteringUser } from "../shared/registering-user";
 import { RegistrationService } from './shared/registration.service';
 
 @Component({
