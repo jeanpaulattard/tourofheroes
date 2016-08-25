@@ -20,8 +20,8 @@ import { HeroSearchComponent } from './herosearch/hero-search.component';
 import { routing } from './app.routing';
 
 @NgModule({
-    imports: [ BrowserModule, FormsModule, routing, HttpModule ],
-    declarations: [ AppComponent, HeroesComponent, HeroDetailsComponent, DashboardComponent, HeroSearchComponent ],
+    imports: [ BrowserModule, FormsModule, HttpModule, routing ],
+    declarations: [ AppComponent, DashboardComponent, HeroesComponent, HeroDetailsComponent,  HeroSearchComponent ],
     bootstrap: [ AppComponent ],
     providers: [
         HeroService,
