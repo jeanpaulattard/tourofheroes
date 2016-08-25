@@ -28,7 +28,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'registration',
-        loadChildren: 'app/registration/registration.module'
+        loadChildren: 'app/+registration/registration.module'
     }
 ];
 
