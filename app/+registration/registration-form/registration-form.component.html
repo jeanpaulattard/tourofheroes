@@ -14,15 +14,15 @@
     </div>
     <div class="form-group">
         <label for="favouriteHero">Favourite Hero</label>
-        <input #favhero="ngModel" type="text" class="form-control" id="favouriteHero" name="favouriteHero" required
-               [(ngModel)]="model.favouriteHero" [class.form-error]="favhero.dirty && favhero.invalid">
+        <select #favHero="ngModel" id="favouriteHero" name="favouriteHero" [(ngModel)]="model.favouriteHero" required
+                class="form-control" [class.form-error]="favHero.dirty && favHero.invalid">
+            <option *ngFor="let hero of heros" [value]="hero.name">{{hero.name}}</option>
+        </select>
     </div>
     <div class="form-group">
-        <label for="favouritePower">Favourite Power</label>
-        <select #favpower="ngModel" class="form-control" id="favouritePower" name="favouritePower"
-                [(ngModel)]="model.favouritePower" [class.form-error]="favpower.dirty && favpower.invalid">
-            <option *ngFor="let power of powers" [value]="power">{{power}}</option>
-        </select>
+        <label for="password">Password</label>
+        <input #password="ngModel" id="password" name="password" [(ngModel)]="model.password" required
+               class="form-control" [class.form-error]="password.dirty && password.invalid">
     </div>
 
     <button type="submit" class="btn btn-default" [disabled]="registrationForm.form.invalid">Submit</button>
