@@ -13,7 +13,6 @@ import { RegistrationService } from './shared/registration.service';
     templateUrl: 'registration.component.html'
 })
 export class RegistrationComponent {
-    users: RegisteringUser[] = [];
 
     constructor(private router: Router, private registrationService: RegistrationService) {}
 

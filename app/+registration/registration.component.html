@@ -1,12 +1,4 @@
 <div class="container">
     <h1>Registration</h1>
     <registration-form (save)="addUser($event)"></registration-form>
-    <table *ngIf="users.length > 0" class="table">
-        <tr *ngFor="let user of users">
-            <td>{{user.name}}</td>
-            <td>{{user.surname}}</td>
-            <td>{{user.favouriteHero}}</td>
-            <td>{{user.favouritePower}}</td>
-        </tr>
-    </table>
 </div>

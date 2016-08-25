@@ -8,10 +8,12 @@ import { FormsModule } from "@angular/forms";
 import { registrationRouting } from "./registration.routing";
 import { RegistrationComponent } from "./registration.component";
 import { RegistrationFormComponent } from "./registration-form/registration-form.component";
+import { RegistrationService } from './shared/registration.service';
 
 @NgModule({
     imports: [ CommonModule, FormsModule, registrationRouting ],
-    declarations: [ RegistrationComponent, RegistrationFormComponent ]
+    declarations: [ RegistrationComponent, RegistrationFormComponent ],
+    providers: [ RegistrationService ]
 })
 export default class RegistrationModule {
 }
