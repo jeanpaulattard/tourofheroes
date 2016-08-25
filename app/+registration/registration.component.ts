@@ -5,24 +5,22 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { RegisteredUser } from "./shared/registered-user";
+import { RegisteringUser } from "./shared/registering-user";
+import { RegistrationService } from './shared/registration.service';
 
 @Component({
     moduleId: module.id,
     templateUrl: 'registration.component.html'
 })
 export class RegistrationComponent {
-    users: RegisteredUser[] = [];
+    users: RegisteringUser[] = [];
 
-    constructor(private router: Router) {}
+    constructor(private router: Router, private registrationService: RegistrationService) {}
 
-    addUser(user: RegisteredUser) {
-        localStorage.setItem("User", JSON.stringify(user))
-        localStorage.setItem("Authorisation", "token");
-        this.users.push(user);
+    addUser(user: RegisteringUser) {
+        this.registrationService.register(user);
 
         let link = [ '/dashboard' ];
-
         this.router.navigate(link);
     }
 }
