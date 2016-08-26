@@ -9,14 +9,13 @@ import { HttpModule, XHRBackend } from '@angular/http';
 import { InMemoryBackendService } from 'angular2-in-memory-web-api/index';
 
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
 
 import { routing } from './app.routing';
 import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
     imports: [ BrowserModule, FormsModule, HttpModule, routing, SharedModule.forRoot() ],
-    declarations: [ AppComponent, HeroesComponent ],
+    declarations: [ AppComponent ],
     bootstrap: [ AppComponent ],
     providers: [
         { provide: XHRBackend, useClass: InMemoryBackendService }
