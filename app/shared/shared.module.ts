@@ -3,11 +3,13 @@
  */
 
 import { ModuleWithProviders, NgModule } from "@angular/core";
+import { SEED_DATA } from 'angular2-in-memory-web-api';
 
 import { AuthenticationService } from './services/authentication.service';
 import { LocalStorageService } from "./services/local-storage.service";
 import { UsersService } from './services/users.service';
 import { HeroService } from './services/hero.service';
+import { InMemoryDataService } from './services/in-memory-data.service';
 
 @NgModule({
     imports: [],
@@ -29,7 +31,8 @@ export class SharedModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: SharedModule,
-            providers: [ AuthenticationService, HeroService, LocalStorageService, UsersService ]
+            providers: [ AuthenticationService, HeroService, LocalStorageService, UsersService,
+                { provide: SEED_DATA, useClass: InMemoryDataService } ]
         }
     }
 }
