@@ -4,8 +4,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Hero } from '../objects/hero';
-import { HeroService } from '../services/hero.service';
+import { Hero } from '../shared/hero';
+import { HeroService } from '../shared/services/hero.service';
 
 @Component({
     selector: 'heroes',

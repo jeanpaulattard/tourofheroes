@@ -4,8 +4,8 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Hero } from '../objects/hero';
-import { HeroService } from '../services/hero.service';
+import { Hero } from '../shared/hero';
+import { HeroService } from '../shared/services/hero.service';
 
 @Component({
     selector: 'hero-details',

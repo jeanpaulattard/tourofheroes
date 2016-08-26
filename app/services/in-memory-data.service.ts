@@ -2,7 +2,7 @@
  * Created by jean-paul.attard on 17/08/2016.
  */
 
-import { Hero } from '../objects/hero';
+import { Hero } from '../shared/hero';
 
 export class InMemoryDataService {
     createDb() {

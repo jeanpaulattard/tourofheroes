@@ -11,18 +11,15 @@ import { InMemoryBackendService, SEED_DATA } from 'angular2-in-memory-web-api/in
 import { AppComponent } from './app.component';
 import { HeroDetailsComponent } from './herodetails/herodetail.component'
 import { HeroesComponent } from './heroes/heroes.component';
-import { HeroService } from './services/hero.service';
+import { HeroService } from './shared/services/hero.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
-
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroSearchComponent } from './herosearch/hero-search.component';
 
 import { routing } from './app.routing';
 import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
     imports: [ BrowserModule, FormsModule, HttpModule, routing, SharedModule.forRoot() ],
-    declarations: [ AppComponent, DashboardComponent, HeroesComponent, HeroDetailsComponent,  HeroSearchComponent ],
+    declarations: [ AppComponent, HeroesComponent, HeroDetailsComponent ],
     bootstrap: [ AppComponent ],
     providers: [
         HeroService,
