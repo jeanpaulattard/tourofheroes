@@ -8,11 +8,12 @@ import { FormsModule } from '@angular/forms';
 
 import { DashboardComponent } from './dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { dashboardRouting } from './dashboard.routing';
 
 @NgModule({
-    imports: [ CommonModule, FormsModule ],
+    imports: [ CommonModule, dashboardRouting, FormsModule ],
     declarations: [ DashboardComponent, HeroSearchComponent ],
-    providers: [ ]
+    providers: []
 })
 export default class DashboardModule {
 }
