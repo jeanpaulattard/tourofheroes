@@ -7,6 +7,7 @@ import { ModuleWithProviders, NgModule } from "@angular/core";
 import { AuthenticationService } from './services/authentication.service';
 import { LocalStorageService } from "./services/local-storage.service";
 import { UsersService } from './services/users.service';
+import { HeroService } from './services/hero.service';
 
 @NgModule({
     imports: [],
@@ -28,7 +29,7 @@ export class SharedModule {
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: SharedModule,
-            providers: [ AuthenticationService, LocalStorageService, UsersService ]
+            providers: [ AuthenticationService, HeroService, LocalStorageService, UsersService ]
         }
     }
 }
