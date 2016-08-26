@@ -32,7 +32,8 @@ export class SharedModule {
         return {
             ngModule: SharedModule,
             providers: [ AuthenticationService, HeroService, LocalStorageService, UsersService,
-                { provide: SEED_DATA, useClass: InMemoryDataService } ]
+                { provide: SEED_DATA, useClass: InMemoryDataService }
+            ]
         }
     }
 }
