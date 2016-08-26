@@ -5,7 +5,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
-import { Hero } from '../objects/hero';
+import { Hero } from '../../shared/hero';
 
 @Injectable()
 export class HeroSearchService {

@@ -4,8 +4,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Hero } from '../objects/hero';
-import { HeroSearchService } from '../services/hero-search.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
@@ -15,11 +13,15 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/catch';
 
+import { Hero } from '../../shared/hero';
+import { HeroSearchService } from './hero-search.service';
+
+
 @Component({
     selector: 'hero-search',
     templateUrl: 'app/herosearch/hero-search.component.html',
     styleUrls: [ 'app/herosearch/hero-search.component.css' ],
-    providers: [ HeroSearchService ]
+    providers: [ HeroSearchService ] // Specific to this component
 })
 
 export class HeroSearchComponent implements OnInit {
