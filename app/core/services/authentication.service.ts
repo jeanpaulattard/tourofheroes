@@ -17,7 +17,7 @@ export class AuthenticationService {
     }
 
     isAuthenticated() {
-        return this.getAuthenticationToken ? true : false;
+        return this.getAuthenticationToken() ? true : false;
     }
 
     setAuthenticationToken(value: string) {
