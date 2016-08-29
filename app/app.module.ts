@@ -11,10 +11,11 @@ import { InMemoryBackendService } from 'angular2-in-memory-web-api/index';
 import { AppComponent } from './app.component';
 
 import { routing } from './app.routing';
-import { SharedModule } from "./shared/shared.module";
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-    imports: [ BrowserModule, FormsModule, HttpModule, routing, SharedModule.forRoot() ],
+    imports: [ BrowserModule, CoreModule, FormsModule, HttpModule, routing, SharedModule ],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ],
     providers: [

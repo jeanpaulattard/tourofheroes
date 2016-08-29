@@ -5,7 +5,7 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Hero } from '../shared/hero';
-import { HeroService } from '../shared/services/hero.service';
+import { HeroService } from '../core/services/hero.service';
 
 @Component({
     moduleId: module.id,

@@ -3,8 +3,8 @@
  */
 
 import { Injectable } from '@angular/core';
-import { RegisteredUsers } from '../registered-users';
-import { RegisteringUser } from '../registering-user';
+import { RegisteredUsers } from '../../shared/registered-users';
+import { RegisteringUser } from '../../shared/registering-user';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable()

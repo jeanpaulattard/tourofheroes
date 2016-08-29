@@ -3,9 +3,9 @@
  */
 import { Injectable } from '@angular/core';
 
-import { AuthenticationService } from '../../shared/services/authentication.service';
+import { AuthenticationService } from '../../core/services/authentication.service';
 import { RegisteringUser } from '../../shared/registering-user';
-import { UsersService } from '../../shared/services/users.service';
+import { UsersService } from '../../core/services/users.service';
 
 @Injectable()
 export class RegistrationService {
