@@ -2,6 +2,7 @@
  * Created by jean-paul.attard on 12/08/2016.
  */
 
+import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
@@ -12,4 +13,4 @@ const appRoutes: Routes = [
     { path: 'registration', loadChildren: 'app/+registration/registration.module' }
 ];
 
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
