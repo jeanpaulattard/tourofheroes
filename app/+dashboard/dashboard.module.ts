@@ -9,9 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { dashboardRouting } from './dashboard.routing';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [ CommonModule, dashboardRouting, FormsModule ],
+    imports: [ CommonModule, dashboardRouting, FormsModule, SharedModule],
     declarations: [ DashboardComponent, HeroSearchComponent ],
     providers: []
 })
