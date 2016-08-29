@@ -5,6 +5,7 @@
 import { ModuleWithProviders, NgModule } from "@angular/core";
 import { SEED_DATA } from 'angular2-in-memory-web-api';
 
+import { HighlightDirective } from './attribute-directives/highlight.directive';
 import { UnlessDirective } from './structural-directives/unless.directive';
 
 import { AuthenticationService } from './services/authentication.service';
@@ -15,8 +16,8 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 
 @NgModule({
     imports: [],
-    declarations: [ UnlessDirective ],
-    exports: [ UnlessDirective ]
+    declarations: [ HighlightDirective, UnlessDirective ],
+    exports: [ HighlightDirective, UnlessDirective ]
 })
 export class SharedModule {
     /**

@@ -9,9 +9,10 @@ import { registrationRouting } from "./registration.routing";
 import { RegistrationComponent } from "./registration.component";
 import { RegistrationFormComponent } from "./registration-form/registration-form.component";
 import { RegistrationService } from './shared/registration.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [ CommonModule, FormsModule, registrationRouting ],
+    imports: [ CommonModule, FormsModule, registrationRouting, SharedModule ],
     declarations: [ RegistrationComponent, RegistrationFormComponent ],
     providers: [ RegistrationService ]
 })

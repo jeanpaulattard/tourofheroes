@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="name">Name</label>
         <input #name="ngModel" type="text" class="form-control" id="name" name="name" required [(ngModel)]="model.name"
-               [class.form-error]="name.dirty && name.invalid">
+               [class.form-error]="name.dirty && name.invalid"  [myHighlight]="'#77DD77'">
         <div *ngIf="name.dirty && name.invalid" class="alert alert-danger">
             Name is required
         </div>
@@ -10,19 +10,19 @@
     <div class="form-group">
         <label for="surname">Surname</label>
         <input #surname="ngModel" type="text" class="form-control" id="surname" name="surname" required
-               [(ngModel)]="model.surname" [class.form-error]="surname.dirty && surname.invalid">
+               [(ngModel)]="model.surname" [class.form-error]="surname.dirty && surname.invalid" [myHighlight]="'#FFB347'">
     </div>
     <div class="form-group">
         <label for="favouriteHero">Favourite Hero</label>
         <select #favHero="ngModel" id="favouriteHero" name="favouriteHero" [(ngModel)]="model.favouriteHero" required
-                class="form-control" [class.form-error]="favHero.dirty && favHero.invalid">
+                class="form-control" [class.form-error]="favHero.dirty && favHero.invalid"  myHighlight [defaultColor]="'#966FD6'">
             <option *ngFor="let hero of heroes" [value]="hero">{{hero}}</option>
         </select>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
         <input #password="ngModel" id="password" name="password" [(ngModel)]="model.password" required
-               class="form-control" [class.form-error]="password.dirty && password.invalid">
+               class="form-control" [class.form-error]="password.dirty && password.invalid"  myHighlight>
     </div>
 
     <button type="submit" class="btn btn-default" [disabled]="registrationForm.form.invalid">Submit</button>
