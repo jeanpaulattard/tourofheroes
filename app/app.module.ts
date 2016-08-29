@@ -10,6 +10,7 @@ import { InMemoryBackendService } from 'angular2-in-memory-web-api/index';
 
 import { AppComponent } from './app.component';
 
+import { AppConfig, HeroDIConfig } from './app.config';
 import { routing } from './app.routing';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -19,7 +20,8 @@ import { SharedModule } from './shared/shared.module';
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ],
     providers: [
-        { provide: XHRBackend, useClass: InMemoryBackendService }
+        { provide: XHRBackend, useClass: InMemoryBackendService },
+        { provide: AppConfig, useValue: HeroDIConfig }
     ]
 })
 
