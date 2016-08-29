@@ -2,7 +2,6 @@
  * Created by jean-paul.attard on 11/08/2016.
  */
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, XHRBackend } from '@angular/http';
 
@@ -15,7 +14,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-    imports: [ BrowserModule, CoreModule, FormsModule, HttpModule, routing, SharedModule ],
+    imports: [ CoreModule, FormsModule, HttpModule, routing, SharedModule ],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ],
     providers: [

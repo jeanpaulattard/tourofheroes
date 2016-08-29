@@ -6,15 +6,19 @@ import { ActivatedRoute, Params } from '@angular/router';
 
 import { Hero } from '../shared/hero';
 import { HeroService } from '../core/services/hero.service';
+import { TitleWrapperService } from '../core/services/title-wrapper.service';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'hero-details.component.html',
-    styleUrls: [ 'hero-details.component.css' ]
-})
+               moduleId: module.id,
+               templateUrl: 'hero-details.component.html',
+               styleUrls: [ 'hero-details.component.css' ]
+           })
 
 export class HeroDetailsComponent implements OnInit {
-    constructor(private heroService: HeroService, private activeRoute: ActivatedRoute) {}
+    constructor(private heroService: HeroService, private activeRoute: ActivatedRoute,
+                private titleWrapperService: TitleWrapperService) {
+        this.titleWrapperService.setTitle('Heroe Details')
+    }
 
     @Input() hero: Hero;
     @Output() close = new EventEmitter();

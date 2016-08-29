@@ -3,6 +3,8 @@
  */
 
 import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { BrowserModule, Title } from '@angular/platform-browser';
+
 import { SEED_DATA } from 'angular2-in-memory-web-api';
 
 import { AppConfig, HeroDIConfig } from '../app.config';
@@ -12,6 +14,7 @@ import { HeroService } from './services/hero.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { UsersService } from './services/users.service';
+import { TitleWrapperService } from './services/title-wrapper.service';
 
 /**
  * The Core Module should contain all the singleton providers that are to be imported by the AppModule,
@@ -34,11 +37,12 @@ import { UsersService } from './services/users.service';
  * instance imported by the root AppModule. Now parentModule exists and the constructor throws the error.
  */
 @NgModule({
-    imports: [],
-    providers: [ AuthenticationService, HeroService, LocalStorageService, UsersService, Title,
+    imports: [ BrowserModule ],
+    providers: [ AuthenticationService, HeroService, LocalStorageService, UsersService, Title, TitleWrapperService,
         { provide: AppConfig, useValue: HeroDIConfig },
         { provide: SEED_DATA, useClass: InMemoryDataService }
-    ]
+    ],
+    exports: [ BrowserModule ]
 })
 export class CoreModule {
     constructor(@Optional() @SkipSelf() private parentModule: CoreModule) {

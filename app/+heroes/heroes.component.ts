@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { Hero } from '../shared/hero';
 import { HeroService } from '../core/services/hero.service';
+import { TitleWrapperService } from '../core/services/title-wrapper.service';
 
 @Component({
     moduleId: module.id,
@@ -16,7 +17,9 @@ import { HeroService } from '../core/services/hero.service';
 
 export class HeroesComponent implements OnInit {
     constructor(private heroService: HeroService,
-                private router: Router) {}
+                private router: Router, private titleWrapperService: TitleWrapperService) {
+        this.titleWrapperService.setTitle('Heroes')
+    }
 
     selectedHero: Hero;
     public heroes: Hero[];

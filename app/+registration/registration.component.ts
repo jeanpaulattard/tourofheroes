@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 
 import { RegisteringUser } from "../shared/registering-user";
 import { RegistrationService } from './shared/registration.service';
+import { TitleWrapperService } from '../core/services/title-wrapper.service';
 
 @Component({
     moduleId: module.id,
@@ -14,7 +15,10 @@ import { RegistrationService } from './shared/registration.service';
 })
 export class RegistrationComponent {
 
-    constructor(private router: Router, private registrationService: RegistrationService) {}
+    constructor(private router: Router, private registrationService: RegistrationService,
+                private titleWrapperService: TitleWrapperService) {
+        this.titleWrapperService.setTitle('Registration')
+    }
 
     addUser(user: RegisteringUser) {
         this.registrationService.register(user);
