@@ -5,6 +5,8 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { SEED_DATA } from 'angular2-in-memory-web-api';
 
+import { AppConfig, HeroDIConfig } from '../app.config';
+
 import { AuthenticationService } from './services/authentication.service';
 import { HeroService } from './services/hero.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
@@ -33,7 +35,8 @@ import { UsersService } from './services/users.service';
  */
 @NgModule({
     imports: [],
-    providers: [ AuthenticationService, HeroService, LocalStorageService, UsersService,
+    providers: [ AuthenticationService, HeroService, LocalStorageService, UsersService, Title,
+        { provide: AppConfig, useValue: HeroDIConfig },
         { provide: SEED_DATA, useClass: InMemoryDataService }
     ]
 })

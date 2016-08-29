@@ -4,12 +4,12 @@
 
 import { OpaqueToken } from '@angular/core';
 
-export interface DIConfigInterface {
+export interface DIConfig {
     apiEndpoint: string;
     appTitle: string;
 }
 
-export const HeroDIConfig: DIConfigInterface = {
+export const HeroDIConfig: DIConfig = {
     apiEndpoint: 'test.endpoint.com',
     appTitle: 'Heroic | '
 }
