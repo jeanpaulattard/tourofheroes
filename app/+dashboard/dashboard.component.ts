@@ -33,7 +33,7 @@ export class DashboardComponent {
     }
 
     gotoHero(hero: Hero) {
-        let link = [ '/a/details', hero.id ];
+        let link = [ '/a/heroes', hero.id ];
         this.router.navigate(link);
     }
 }

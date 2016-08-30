@@ -4,13 +4,14 @@
 import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Hero } from '../shared/hero';
-import { HeroService } from '../core/services/hero.service';
-import { TitleWrapperService } from '../core/services/title-wrapper.service';
+import { Hero } from '../../shared/hero';
+import { HeroService } from '../../core/services/hero.service';
+import { TitleWrapperService } from '../../core/services/title-wrapper.service';
 import { Subscription } from 'rxjs';
 
 @Component({
     moduleId: module.id,
+    selector: 'hero-details',
     templateUrl: 'hero-details.component.html',
     styleUrls: [ 'hero-details.component.css' ]
 })

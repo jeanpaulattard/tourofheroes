@@ -31,7 +31,7 @@ export class HeroesComponent implements OnInit {
     }
 
     gotoHero(hero: Hero) {
-        let link = [ '/a/details', hero.id ];
+        let link = [ '/a/heroes', hero.id ];
         this.router.navigate(link);
     }
 
@@ -40,6 +40,7 @@ export class HeroesComponent implements OnInit {
     }
 
     addHero() {
+        console.log('adding hero...');
         this.addingHero = true;
         this.selectedHero = null;
     }

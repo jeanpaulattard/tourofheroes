@@ -8,10 +8,11 @@ import { NgModule } from '@angular/core';
 
 import { HeroesComponent } from './heroes.component';
 import { heroeRouting } from './heroes.routing';
+import { HeroDetailsComponent } from './hero-details/hero-details.component';
 
 @NgModule({
     imports: [ CommonModule, FormsModule, heroeRouting ],
-    declarations: [ HeroesComponent ]
+    declarations: [ HeroesComponent, HeroDetailsComponent ]
 })
 export default class HeroesModule {
 }
