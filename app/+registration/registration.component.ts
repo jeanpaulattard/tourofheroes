@@ -23,7 +23,7 @@ export class RegistrationComponent {
     addUser(user: RegisteringUser) {
         this.registrationService.register(user);
 
-        let link = [ '/dashboard' ];
+        let link = [ '/a/dashboard' ];
         this.router.navigate(link);
     }
 }
