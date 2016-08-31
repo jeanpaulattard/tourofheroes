@@ -10,7 +10,14 @@ export class AuthenticationService {
 
     private authenticationTokenKey: string = 'Authorization';
 
-    constructor(private localStorageService: LocalStorageService) {}
+    private redirectUrl: string;
+
+    constructor(private localStorageService: LocalStorageService) {
+    }
+
+    getReturnUrl(): string {
+        return this.redirectUrl;
+    }
 
     getAuthenticationToken(): string {
         return this.localStorageService.get(this.authenticationTokenKey);
@@ -18,6 +25,10 @@ export class AuthenticationService {
 
     isAuthenticated() {
         return this.getAuthenticationToken() ? true : false;
+    }
+
+    setReturnUrl(value: string) {
+        this.redirectUrl = value;
     }
 
     setAuthenticationToken(value: string) {
