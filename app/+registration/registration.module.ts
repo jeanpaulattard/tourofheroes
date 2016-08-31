@@ -12,7 +12,7 @@ import { RegistrationService } from './shared/registration.service';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-    imports: [ CommonModule, FormsModule, registrationRouting, SharedModule ],
+    imports: [ registrationRouting, SharedModule ],
     declarations: [ RegistrationComponent, RegistrationFormComponent ],
     providers: [ RegistrationService ]
 })
