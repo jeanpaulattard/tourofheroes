@@ -12,17 +12,15 @@ import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { BaseComponent } from './base/base.component';
 import { BaseProtectedComponent } from './base-protected/base-protected.component';
 
 @NgModule({
     imports: [ CoreModule, FormsModule, HttpModule, routing, SharedModule ],
-    declarations: [ AppComponent, BaseComponent, BaseProtectedComponent ],
+    declarations: [ AppComponent, BaseProtectedComponent ],
     bootstrap: [ AppComponent ],
     providers: [
         { provide: XHRBackend, useClass: InMemoryBackendService }
     ]
 })
-
 export class AppModule {
 }
