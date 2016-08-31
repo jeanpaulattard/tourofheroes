@@ -21,7 +21,8 @@ const appRoutes: Routes = [
         ],
         canActivate: [ AuthGuard ]
     },
-    { path: 'registration', loadChildren: 'app/+registration/registration.module' }
+    { path: 'registration', loadChildren: 'app/+registration/registration.module' },
+    { path: 'login', loadChildren: 'app/+login/login.module' }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
