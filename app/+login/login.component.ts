@@ -9,4 +9,13 @@ import { Component } from '@angular/core';
     templateUrl: 'login.component.html'
 })
 export class LoginComponent {
+    error: string;
+
+    onError(error: string) {
+        this.error = error;
+    }
+
+    clearError() {
+        this.error = null;
+    }
 }

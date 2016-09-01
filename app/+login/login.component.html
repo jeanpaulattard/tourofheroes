@@ -1,5 +1,13 @@
 <div class="container">
     <h1>Login</h1>
-    <login-form></login-form>
+    <div *ngIf="error">
+        <div class="alert alert-danger">
+            <button type="button" class="close" (click)="clearError()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <p>{{error}}</p>
+        </div>
+    </div>
+    <login-form (error)="onError($event)"></login-form>
     <a routerLink="/registration">Register</a>
 </div>
