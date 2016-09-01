@@ -3,10 +3,7 @@
  */
 
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
-import { RegisteringUser } from "../shared/registering-user";
-import { RegistrationService } from './shared/registration.service';
 import { TitleWrapperService } from '../core/services/title-wrapper.service';
 
 @Component({
@@ -15,15 +12,17 @@ import { TitleWrapperService } from '../core/services/title-wrapper.service';
 })
 export class RegistrationComponent {
 
-    constructor(private router: Router, private registrationService: RegistrationService,
-                private titleWrapperService: TitleWrapperService) {
-        this.titleWrapperService.setTitle('Registration')
+    error: string;
+
+    constructor(private titleWrapperService: TitleWrapperService) {
+        this.titleWrapperService.setTitle('Registration');
     }
 
-    addUser(user: RegisteringUser) {
-        this.registrationService.register(user);
+    onError(error: string) {
+        this.error = error;
+    }
 
-        let link = [ '/a/dashboard' ];
-        this.router.navigate(link);
+    clearError() {
+        this.error = null;
     }
 }
