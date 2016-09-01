@@ -26,7 +26,7 @@ export class LoginService {
         });
 
         if (retrievedUsers && retrievedUsers.length > 0) {
-            this.authenticationService.setAuthenticationToken(body.name.concat(body.password));
+            this.authenticationService.setAuthenticationToken(body.username.concat(body.password));
         }
 
         return new Promise<boolean>(resolve => setTimeout(() => resolve(retrievedUsers && retrievedUsers.length > 0),
