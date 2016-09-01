@@ -19,7 +19,7 @@ export class LoginService {
     login(body: LoginBody): Promise<boolean> {
         let users: RegisteredUsers = this.usersService.getUsers();
         let retrievedUsers: RegisteringUser[] = users.users.filter(user => {
-            if (user.name === body.name && user.password === body.password) {
+            if (user.username === body.username && user.password === body.password) {
                 return true;
             }
             return false;

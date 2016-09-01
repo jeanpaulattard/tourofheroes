@@ -3,6 +3,6 @@
  */
 
 export class LoginFormModel {
-    name: string;
+    username: string;
     password: string;
 }

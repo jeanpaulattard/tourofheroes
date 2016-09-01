@@ -1,27 +1,22 @@
 <form (ngSubmit)="register(registrationForm);" #registrationForm="ngForm">
     <div class="form-group">
-        <label for="name">Name</label>
-        <input #name="ngModel" type="text" class="form-control" id="name" name="name" required [(ngModel)]="model.name"
-               [class.form-error]="name.dirty && name.invalid"  [myHighlight]="'#77DD77'">
-        <div *ngIf="name.dirty && name.invalid" class="alert alert-danger">
+        <label for="username">Username</label>
+        <input #username="ngModel" type="text" class="form-control" id="username" name="username" required [(ngModel)]="model.username"
+               [class.form-error]="username.dirty && username.invalid"  [myHighlight]="'#77DD77'">
+        <div *ngIf="username.dirty && username.invalid" class="alert alert-danger">
             Name is required
         </div>
     </div>
     <div class="form-group">
-        <label for="surname">Surname</label>
-        <input #surname="ngModel" type="text" class="form-control" id="surname" name="surname" required
-               [(ngModel)]="model.surname" [class.form-error]="surname.dirty && surname.invalid" [myHighlight]="'#FFB347'">
-    </div>
-    <div class="form-group">
         <label for="favouriteHero">Favourite Hero</label>
-        <select #favHero="ngModel" id="favouriteHero" name="favouriteHero" [(ngModel)]="model.favouriteHero" required
+        <select #favHero="ngModel" [(ngModel)]="model.favouriteHero" id="favouriteHero" name="favouriteHero"  required
                 class="form-control" [class.form-error]="favHero.dirty && favHero.invalid"  myHighlight [defaultColor]="'#966FD6'">
             <option *ngFor="let hero of heroes" [value]="hero">{{hero}}</option>
         </select>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input #password="ngModel" id="password" name="password" [(ngModel)]="model.password" required
+        <input #password="ngModel" [(ngModel)]="model.password"  id="password" name="password" type="password" required
                class="form-control" [class.form-error]="password.dirty && password.invalid"  myHighlight>
     </div>
 

@@ -24,7 +24,7 @@ export class LoginFormComponent {
     @Output() error = new EventEmitter();
 
     doLogin(form: FormGroup) {
-        let body: LoginBody = new LoginBody(this.model.name, this.model.password);
+        let body: LoginBody = new LoginBody(this.model.username, this.model.password);
 
         this.loginService.login(body).then(response => {
             if (response) {

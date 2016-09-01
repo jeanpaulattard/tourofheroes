@@ -10,10 +10,11 @@ import { UsersService } from '../../core/services/users.service';
 @Injectable()
 export class RegistrationService {
 
-    constructor(private usersService: UsersService, private authenticationService: AuthenticationService) {}
+    constructor(private usersService: UsersService, private authenticationService: AuthenticationService) {
+    }
 
     register(user: RegisteringUser) {
         this.usersService.addUserToUsers(user);
-        this.authenticationService.setAuthenticationToken(user.name + user.surname + user.password);
+        this.authenticationService.setAuthenticationToken(user.username + user.password);
     }
 }

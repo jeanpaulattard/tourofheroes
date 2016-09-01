@@ -22,7 +22,7 @@ export class RegistrationFormComponent {
     @Output() save = new EventEmitter();
 
     register(form: FormGroup) {
-        this.save.emit(new RegisteringUser(this.model.name, this.model.surname, this.model.favouriteHero, this.model.password));
+        this.save.emit(new RegisteringUser(this.model.username, this.model.favouriteHero, this.model.password));
         form.reset();
     }
 }

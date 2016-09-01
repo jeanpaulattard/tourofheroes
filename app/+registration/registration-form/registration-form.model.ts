@@ -3,8 +3,7 @@
  */
 
 export class RegistrationFormModel {
-    name: string;
-    surname: string;
+    username: string;
     favouriteHero: string;
     password: string;
 }

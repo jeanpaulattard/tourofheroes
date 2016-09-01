@@ -1,8 +1,8 @@
 <form #loginForm="ngForm" (ngSubmit)="doLogin(loginForm)">
     <div class="form-group">
-        <label for="name">Name</label>
-        <input #name="ngModel" [(ngModel)]="model.name" id="name" name="name" class="form-control" type="text" required
-               [class.form-error]="name.dirty && name.invalid">
+        <label for="username">Username</label>
+        <input #username="ngModel" [(ngModel)]="model.username" id="username" name="username" class="form-control" type="text" required
+               [class.form-error]="username.dirty && username.invalid">
     </div>
     <div class="form-group">
         <label for="password">Password</label>
