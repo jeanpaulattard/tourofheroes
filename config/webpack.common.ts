@@ -10,13 +10,13 @@ var helpers = require('./helpers');
 
 module.exports = {
     entry: {
-        'polyfills': './src/polyfills',
-        'vendor': './src/vendor',
-        'app': './src/main'
+        'polyfills': './src/polyfills.ts',
+        'vendor': './src/vendor.ts',
+        'app': './src/main.ts'
     },
 
     resolve: {
-        extensions: [ '', '.js', '.ts' ]
+        extensions: [ '', '.ts', '.js' ]
     },
 
     module: {
@@ -27,11 +27,11 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                loaders: 'html'
+                loader: 'html'
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loaders: 'file?name=assets/[name].[hash].[ext]'
+                loader: 'file?name=assets/[name].[hash].[ext]'
             },
             {
                 test: /\.css$/,
@@ -53,5 +53,9 @@ module.exports = {
         new HTMLWebpackPlugin({
             template: 'src/index.html'
         })
-    ]
+    ],
+
+    node: {
+        fs: "empty"
+    }
 };
