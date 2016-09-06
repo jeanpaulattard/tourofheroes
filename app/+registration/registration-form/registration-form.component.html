@@ -2,7 +2,7 @@
     <div class="form-group">
         <label for="username">Username</label>
         <input #username="ngModel" [(ngModel)]="model.username" type="text" class="form-control" id="username"
-               name="username" required minlength="10" maxlength="20"
+               name="username" required minlength="5" maxlength="20"
                [class.form-error]="username.dirty && username.invalid" [myHighlight]="'#77DD77'">
         <div *ngIf="username.dirty && username.invalid" class="alert alert-danger">
             <p *ngIf="username.errors && username.errors.required">Username is required</p>
