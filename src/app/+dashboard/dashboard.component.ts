@@ -10,9 +10,8 @@ import { HeroService } from '../core/services/hero.service';
 import { TitleWrapperService } from '../core/services/title-wrapper.service';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'dashboard.component.html',
-    styleUrls: [ 'dashboard.component.css' ]
+    templateUrl: './dashboard.component.html',
+    styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent {
 

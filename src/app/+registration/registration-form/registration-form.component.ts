@@ -11,9 +11,8 @@ import { RegisteringUser } from "../../shared/registering-user";
 import { RegistrationService } from '../shared/registration.service';
 
 @Component({
-    moduleId: module.id,
     selector: 'registration-form',
-    templateUrl: 'registration-form.component.html'
+    templateUrl: './registration-form.component.html'
 })
 export class RegistrationFormComponent {
 

@@ -7,8 +7,7 @@ import { Component } from '@angular/core';
 import { TitleWrapperService } from '../core/services/title-wrapper.service';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'registration.component.html'
+    templateUrl: './registration.component.html'
 })
 export class RegistrationComponent {
 

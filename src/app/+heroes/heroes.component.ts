@@ -9,10 +9,9 @@ import { HeroService } from '../core/services/hero.service';
 import { TitleWrapperService } from '../core/services/title-wrapper.service';
 
 @Component({
-    moduleId: module.id,
     selector: 'heroes',
-    templateUrl: 'heroes.component.html',
-    styleUrls: [ 'heroes.component.css' ]
+    templateUrl: './heroes.component.html',
+    styleUrls: [ './heroes.component.css' ]
 })
 
 export class HeroesComponent implements OnInit {

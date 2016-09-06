@@ -10,10 +10,9 @@ import { TitleWrapperService } from '../../core/services/title-wrapper.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-    moduleId: module.id,
     selector: 'hero-details',
-    templateUrl: 'hero-details.component.html',
-    styleUrls: [ 'hero-details.component.css' ]
+    templateUrl: './hero-details.component.html',
+    styleUrls: [ './hero-details.component.css' ]
 })
 export class HeroDetailsComponent implements OnInit, OnDestroy {
 

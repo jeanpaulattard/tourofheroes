@@ -10,9 +10,8 @@ import { LoginService } from '../shared/login.service';
 import { LoginBody } from '../shared/login.body';
 
 @Component({
-    moduleId: module.id,
     selector: 'login-form',
-    templateUrl: 'login-form.component.html'
+    templateUrl: './login-form.component.html'
 })
 export class LoginFormComponent {
 

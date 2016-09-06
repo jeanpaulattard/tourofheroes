@@ -5,9 +5,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-    moduleId: module.id,
-    templateUrl: 'base-protected.component.html',
-    styleUrls: [ 'base-protected.component.css' ]
+    templateUrl: './base-protected.component.html',
+    styleUrls: [ './base-protected.component.css' ]
 })
 export class BaseProtectedComponent {
 }
