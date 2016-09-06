@@ -55,7 +55,7 @@ export class HeroSearchComponent implements OnInit {
                           // Create a new observable each time
                           .switchMap(term => term ? this.heroSearchService.search(term) : Observable.of<Hero[]>([]))
                           .catch(error => {
-                              console.log(error);
+                              console.error(error);
                               return Observable.of<Hero[]>([]);
                           });
     }
