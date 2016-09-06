@@ -5,3 +5,4 @@ typings/
 *.js.map
 !systemjs.config.js
 !webpack.config.js
+!karma.conf.js
