@@ -4,13 +4,11 @@
   "description": "Angular 2 Tour of heroes tutorial",
   "main": "main.js",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "lite": "lite-server",
-    "postinstall": "typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings",
-    "lite-server-test" : "lite-server --config=liteserver-test-config.json"
+    "start": "webpack-dev-server --inline --progress --port 8080",
+    "webpack": "webpack",
+    "test": "karma start",
+    "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
+    "postinstall": "typings install"
   },
   "repository": {
     "type": "git",
