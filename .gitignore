@@ -6,3 +6,4 @@ typings/
 !systemjs.config.js
 !webpack.config.js
 !karma.conf.js
+dist/
