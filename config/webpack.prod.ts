@@ -31,11 +31,17 @@ module.exports = webpackMerge(commonConfig, {
         new webpack.optimize.UglifyJsPlugin({
             mangle: {
                 keep_fnames: true
+            },
+            compress: {
+                warnings: false
+            },
+            output: {
+                comments: false
             }
         }),
         new ExtractTextPlugin('[name].[hash].css'),
         new webpack.DefinePlugin({
-            'process.env' : {
+            'process.env': {
                 'ENV': JSON.stringify(ENV)
             }
         })
