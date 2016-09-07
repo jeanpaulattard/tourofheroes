@@ -1,7 +1,6 @@
 // Angular 2
 import '@angular/core';
 import '@angular/common';
-import '@angular/compiler';
 import '@angular/forms';
 import '@angular/http';
 import '@angular/platform-browser';
