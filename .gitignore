@@ -4,5 +4,8 @@ typings/
 *.js
 *.js.map
 !webpack.config.js
-!karma.conf.js
 dist/
+coverage/
+!config/karma-test-shim.js
+!karma.conf.js
+config/karma.conf.js
