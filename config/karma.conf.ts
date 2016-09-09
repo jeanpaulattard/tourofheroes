@@ -17,7 +17,7 @@ module.exports = function (config: any) {
         ],
 
         preprocessors: {
-            './config/karma-test-shim.js': [ 'webpack', 'sourcemap' ]
+            './config/karma-test-shim.js': [ 'webpack' ]
         },
 
         webpack: webpackConfig,
@@ -33,8 +33,14 @@ module.exports = function (config: any) {
         reporters: [ 'progress', 'coverage' ],
 
         coverageReporter: {
-            type: 'html',
-            dir: 'coverage/unit/'
+            dir: 'coverage/unit/',
+            reporters: [
+                {
+                    type: 'json',
+                    subdir: '.',
+                    file: 'coverage.json'
+                }
+            ]
         },
 
         port: 9876,

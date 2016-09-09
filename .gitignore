@@ -6,6 +6,5 @@ typings/
 !webpack.config.js
 dist/
 coverage/
-!config/karma-test-shim.js
 !karma.conf.js
 config/karma.conf.js

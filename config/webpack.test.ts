@@ -15,7 +15,11 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
-                loaders: [ 'ts', 'angular2-template-loader' ]
+                loader: 'awesome-typescript-loader',
+                query: {
+                    sourceMap: false,
+                    inlineSourceMap: true
+                }
             },
             {
                 test: /\.html$/,
@@ -34,6 +38,18 @@ module.exports = {
                 test: /\.css$/,
                 include: helpers.root('src', 'app'),
                 loader: 'raw'
+            }
+        ],
+
+        postLoaders:[
+            {
+                test: /\.(js|ts)$/,
+                loader: 'istanbul-instrumenter-loader',
+                include: helpers.root('src'),
+                exclude: [
+                    /\.(e2e|spec)\.ts$/,
+                    /node_modules/
+                ]
             }
         ]
     }
