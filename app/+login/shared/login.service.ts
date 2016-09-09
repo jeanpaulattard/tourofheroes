@@ -18,6 +18,11 @@ export class LoginService {
 
     login(body: LoginBody): Promise<boolean> {
         let users: RegisteredUsers = this.usersService.getUsers();
+
+        if (!users || !users.users) {
+            return new Promise<Boolean>(resolve => setTimeout(() => resolve(false), 200));
+        }
+        
         let retrievedUsers: RegisteringUser[] = users.users.filter(user => {
             if (user.username === body.username && user.password === body.password) {
                 return true;
