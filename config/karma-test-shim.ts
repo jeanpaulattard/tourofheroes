@@ -19,8 +19,3 @@ appContext.keys().forEach(appContext);
 
 let coverageContext = (<{ context?: Function }>require).context('../src/app', true, /\.ts/);
 coverageContext.keys().forEach(coverageContext);
-
-var testing = require('@angular/core/testing');
-var browser = require('@angular/platform-browser-dynamic/testing');
-
-testing.TestBed.initTestEnvironment(browser.BrowserDynamicTestingModule, browser.platformBrowserDynamicTesting());
