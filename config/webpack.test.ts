@@ -15,12 +15,16 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
-                loader: 'awesome-typescript-loader',
-                query: {
-                    sourceMap: false,
-                    inlineSourceMap: true
-                }
+                loaders: ['ts', 'angular2-template-loader']
             },
+            //{
+            //    test: /\.ts$/,
+            //    loader: 'awesome-typescript-loader',
+            //    query: {
+            //        sourceMap: false,
+            //        inlineSourceMap: true
+            //    }
+            //},
             {
                 test: /\.html$/,
                 loader: 'html'
