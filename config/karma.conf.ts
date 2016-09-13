@@ -10,14 +10,30 @@ module.exports = function (config: any) {
 
         frameworks: [ 'jasmine' ],
 
+        plugins: [
+            'karma-jasmine',
+            'karma-sourcemap-writer',
+            'karma-sourcemap-loader',
+            'karma-webpack',
+            'karma-coverage',
+            'karma-remap-istanbul',
+            'karma-spec-reporter',
+            'karma-chrome-launcher',
+            'karma-phantomjs-launcher'
+        ],
+
         files: [
-            {
-                pattern: './config/karma-test-shim.js', watched: false
-            }
+            './config/karma-test-shim.js',
+            { pattern: '**/*.map', served: true, included: false, watched: true }
         ],
 
         preprocessors: {
-            './config/karma-test-shim.js': [ 'webpack' ]
+            './config/karma-test-shim.js': [
+                'webpack', 'sourcemap'
+            ],
+            //'./src/app/**/!(*.spec).(ts|js)': [
+            //    'sourcemap'
+            //],
         },
 
         webpack: webpackConfig,
@@ -30,17 +46,23 @@ module.exports = function (config: any) {
             noInfo: true
         },
 
-        reporters: [ 'progress', 'coverage' ],
+        reporters: [ 'spec', 'coverage', /*'karma-remap-istanbul'*/ ],
+
+        remapIstanbulReporter: {
+            src: 'coverage/unit/chrome/coverage-final.json',
+            reports: {
+                html: 'coverage',
+            },
+        },
 
         coverageReporter: {
-            dir: 'coverage/unit/',
             reporters: [
-                {
-                    type: 'json',
-                    subdir: '.',
-                    file: 'coverage.json'
-                }
-            ]
+                { type: 'json' },
+            ],
+            dir: 'coverage/unit/',
+            subdir: (browser: any) => {
+                return browser.toLowerCase().split(/[ /-]/)[ 0 ];
+            }
         },
 
         port: 9876,

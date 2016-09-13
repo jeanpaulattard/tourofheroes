@@ -1,11 +1,11 @@
 /**
  * Created by Jean-paul.attard on 09/09/2016.
  */
-
+var webpack = require('webpack');
 var helpers = require('./helpers');
 
 module.exports = {
-    'devtool': 'inline-source-map',
+    devtool: 'inline-source-map',
 
     resolve: {
         extensions: [ '', '.ts', '.js' ]
@@ -15,16 +15,9 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
-                loaders: ['ts', 'angular2-template-loader']
+                loaders: [ 'ts', 'angular2-template-loader' ],
+                exclude: /node_modules/
             },
-            //{
-            //    test: /\.ts$/,
-            //    loader: 'awesome-typescript-loader',
-            //    query: {
-            //        sourceMap: false,
-            //        inlineSourceMap: true
-            //    }
-            //},
             {
                 test: /\.html$/,
                 loader: 'html'
@@ -45,16 +38,15 @@ module.exports = {
             }
         ],
 
-        postLoaders:[
+        postLoaders: [
             {
-                test: /\.(js|ts)$/,
+                test: /^(.(?!\.spec))*\.ts$/,
                 loader: 'istanbul-instrumenter-loader',
-                include: helpers.root('src'),
-                exclude: [
-                    /\.(e2e|spec)\.ts$/,
-                    /node_modules/
-                ]
             }
         ]
-    }
+    },
+
+    plugins: [
+        new webpack.SourceMapDevToolPlugin({ filename: null, test: /\.ts$/ })
+    ]
 };
