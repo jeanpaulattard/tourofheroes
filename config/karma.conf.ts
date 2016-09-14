@@ -23,17 +23,13 @@ module.exports = function (config: any) {
         ],
 
         files: [
-            './config/karma-test-shim.js',
-            { pattern: '**/*.map', served: true, included: false, watched: true }
+            './config/karma-test-shim.js'
         ],
 
         preprocessors: {
             './config/karma-test-shim.js': [
                 'webpack', 'sourcemap'
-            ],
-            //'./src/app/**/!(*.spec).(ts|js)': [
-            //    'sourcemap'
-            //],
+            ]
         },
 
         webpack: webpackConfig,
@@ -46,18 +42,18 @@ module.exports = function (config: any) {
             noInfo: true
         },
 
-        reporters: [ 'spec', 'coverage', /*'karma-remap-istanbul'*/ ],
+        reporters: [ 'spec', 'coverage'/*, 'karma-remap-istanbul' */],
 
-        remapIstanbulReporter: {
-            src: 'coverage/unit/chrome/coverage-final.json',
-            reports: {
-                html: 'coverage',
-            },
-        },
+        //remapIstanbulReporter: {
+        //    src: 'coverage/unit/chrome/coverage-final.json',
+        //    reports: {
+        //        html: 'coverage',
+        //    },
+        //},
 
         coverageReporter: {
             reporters: [
-                { type: 'json' },
+                { type: 'html' },
             ],
             dir: 'coverage/unit/',
             subdir: (browser: any) => {
