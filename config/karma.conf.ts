@@ -72,7 +72,7 @@ module.exports = function (config: any) {
         autoWatchBatchDelay: 5000, // 5 seconds
 
         // Need to install launchers for firefox, opera, ie and safari
-        browsers: [ 'PhantomJS', 'Chrome', /**'Firefox', 'Opera', 'IE', 'Safari'**/ ],
+        browsers: [ 'PhantomJS', /*'Chrome', *'Firefox', 'Opera', 'IE', 'Safari'**/ ],
 
         singleRun: true
     };
