@@ -22,14 +22,15 @@ class MockLoginService {
 }
 
 class MockRouter {
-    navigate(link: any) {
-
+    navigate() {
     }
 }
 
 describe('Login Form Component', () => {
 
     let fixture: ComponentFixture<LoginFormComponent>;
+    let router: Router;
+    let loginService: LoginService;
 
     beforeEach(done => {
         const configure = (testBed: TestBed) => {
@@ -46,6 +47,9 @@ describe('Login Form Component', () => {
         configureTests(configure).then(testBed => {
             fixture = testBed.createComponent(LoginFormComponent);
             fixture.detectChanges();
+
+            router = fixture.debugElement.injector.get(Router);
+            loginService = fixture.debugElement.injector.get(LoginService);
 
             done();
         });
@@ -72,21 +76,18 @@ describe('Login Form Component', () => {
     });
 
     describe('Logging in', () => {
-        it('Should call router navigate on success', fakeAsync(
-            inject([ Router ], (mockRouter: Router) => {
+        it('Should call router navigate on success', fakeAsync(() => {
+            spyOn(router, 'navigate');
 
-                spyOn(mockRouter, 'navigate');
+            fixture.componentInstance.model.username = 'Username';
+            fixture.componentInstance.model.password = 'Password';
 
-                fixture.componentInstance.model.username = 'Username';
-                fixture.componentInstance.model.password = 'Password';
+            let form = new FormGroup({});
+            fixture.componentInstance.doLogin(form);
+            tick();
 
-                let form = new FormGroup({});
-                fixture.componentInstance.doLogin(form);
-                tick();
-
-                expect(mockRouter.navigate).toHaveBeenCalledWith([ '/a/dashboard' ]);
-            })
-        ));
+            expect(router.navigate).toHaveBeenCalledWith([ '/a/dashboard' ]);
+        }));
 
         it('Should emit an error and reset form on failure', fakeAsync(() => {
             spyOn(fixture.componentInstance.error, 'emit');
