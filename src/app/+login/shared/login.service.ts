@@ -19,7 +19,7 @@ export class LoginService {
     login(body: LoginBody): Promise<boolean> {
         let users: RegisteredUsers = this.usersService.getUsers();
 
-        if (!users || !users.users) {
+        if (!users || users.users.length <= 0) {
             return new Promise<Boolean>(resolve => setTimeout(() => resolve(false), 200));
         }
         
