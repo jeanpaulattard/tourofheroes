@@ -1,7 +1,7 @@
 /**
  * Created by Jean-paul.attard on 14/09/2016.
  */
-import { TestBed, ComponentFixture, inject, fakeAsync, tick } from '@angular/core/testing';
+import { TestBed, ComponentFixture, inject, fakeAsync, tick, async } from '@angular/core/testing';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,6 +10,8 @@ import { SharedModule } from '../../shared/shared.module';
 import { configureTests } from '../../test.config';
 import { LoginBody } from '../shared/login.body';
 import { LoginFormComponent } from './login-form.component';
+import { Component } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 class MockLoginService {
     login(body: LoginBody) {
@@ -26,9 +28,21 @@ class MockRouter {
     }
 }
 
+@Component({
+    template: `<login-form (error)="onError($event)"></login-form>`
+})
+class TestHostComponent {
+    error: string;
+
+    onError(value: string) {
+        this.error = value;
+    }
+}
+
 describe('Login Form Component', () => {
 
     let fixture: ComponentFixture<LoginFormComponent>;
+    let host: ComponentFixture<TestHostComponent>;
     let router: Router;
     let loginService: LoginService;
 
@@ -36,7 +50,7 @@ describe('Login Form Component', () => {
         const configure = (testBed: TestBed) => {
             testBed.configureTestingModule({
                 imports: [ SharedModule ],
-                declarations: [ LoginFormComponent ],
+                declarations: [ TestHostComponent, LoginFormComponent ],
                 providers: [
                     { provide: LoginService, useClass: MockLoginService },
                     { provide: Router, useClass: MockRouter }
@@ -47,6 +61,9 @@ describe('Login Form Component', () => {
         configureTests(configure).then(testBed => {
             fixture = testBed.createComponent(LoginFormComponent);
             fixture.detectChanges();
+
+            host = testBed.createComponent(TestHostComponent);
+            host.detectChanges();
 
             router = fixture.debugElement.injector.get(Router);
             loginService = fixture.debugElement.injector.get(LoginService);
@@ -100,6 +117,13 @@ describe('Login Form Component', () => {
 
             expect(form.reset).toHaveBeenCalled();
             expect(fixture.componentInstance.error.emit).toHaveBeenCalledWith('Invalid Login Credentials');
+        }));
+
+        it('Parent component should be notified on error', async(() => {
+            host.debugElement.query(By.css('form')).triggerEventHandler('submit', null);
+            host.whenStable().then(() => {
+                expect(host.componentInstance.error).toEqual('Invalid Login Credentials');
+            });
         }));
     });
 });
