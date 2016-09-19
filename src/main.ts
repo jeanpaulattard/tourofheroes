@@ -10,4 +10,8 @@ if (process.env.ENV === 'production') {
     enableProdMode();
 }
 
+require('./css/forms.css');
+require('./css/styles.css');
+require('../node_modules/bootstrap/dist/css/bootstrap.min.css')
+
 platformBrowserDynamic().bootstrapModule(AppModule);
