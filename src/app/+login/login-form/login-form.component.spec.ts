@@ -1,8 +1,9 @@
 /**
  * Created by Jean-paul.attard on 14/09/2016.
  */
-import { TestBed, ComponentFixture, inject, fakeAsync, tick, async } from '@angular/core/testing';
-import { FormGroup } from '@angular/forms';
+import { Component, DebugElement } from '@angular/core';
+import { TestBed, ComponentFixture, fakeAsync, tick, async } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { LoginService } from '../shared/login.service';
@@ -10,8 +11,6 @@ import { SharedModule } from '../../shared/shared.module';
 import { configureTests } from '../../test.config';
 import { LoginBody } from '../shared/login.body';
 import { LoginFormComponent } from './login-form.component';
-import { Component } from '@angular/core';
-import { By } from '@angular/platform-browser';
 
 class MockLoginService {
     login(body: LoginBody) {
@@ -99,8 +98,7 @@ describe('Login Form Component', () => {
             fixture.componentInstance.model.username = 'Username';
             fixture.componentInstance.model.password = 'Password';
 
-            let form = new FormGroup({});
-            fixture.componentInstance.doLogin(form);
+            fixture.componentInstance.doLogin();
             tick();
 
             expect(router.navigate).toHaveBeenCalledWith([ '/a/dashboard' ]);
@@ -108,14 +106,12 @@ describe('Login Form Component', () => {
 
         it('Should emit an error and reset form on failure', fakeAsync(() => {
             spyOn(fixture.componentInstance.error, 'emit');
+            spyOn(fixture.componentInstance.loginForm, 'reset');
 
-            let form = new FormGroup({});
-            spyOn(form, 'reset');
-
-            fixture.componentInstance.doLogin(form);
+            fixture.componentInstance.doLogin();
             tick();
 
-            expect(form.reset).toHaveBeenCalled();
+            expect(fixture.componentInstance.loginForm.reset).toHaveBeenCalled();
             expect(fixture.componentInstance.error.emit).toHaveBeenCalledWith('Invalid Login Credentials');
         }));
 
