@@ -1,13 +1,13 @@
 <form #loginForm="ngForm" (ngSubmit)="doLogin()">
     <div class="form-group">
         <label for="username">Username</label>
-        <input #username="ngModel" [(ngModel)]="model.username" id="username" name="username" class="form-control" type="text" required
-               [class.form-error]="username.dirty && username.invalid">
+        <input #username="ngModel" [(ngModel)]="model.username" id="username" name="username" class="form-control"
+               type="text" required>
     </div>
     <div class="form-group">
         <label for="password">Password</label>
-        <input #password="ngModel" [(ngModel)]="model.password" id="password" name="password" class="form-control" type="password" required
-               [class.form-error]="password.dirty && password.invalid">
+        <input #password="ngModel" [(ngModel)]="model.password" id="password" name="password" class="form-control"
+               type="password" required>
     </div>
 
     <button type="submit" class="btn btn-default" [disabled]="loginForm.form.invalid">Login</button>
