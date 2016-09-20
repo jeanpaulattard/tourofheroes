@@ -15,7 +15,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts$/,
-                loaders: [ 'awesome-typescript-loader', 'angular2-template-loader' ],
+                loaders: [ 'awesome-typescript-loader?sourceMap=false&inlineSourceMap=true',
+                           'angular2-template-loader' ],
                 exclude: /node_modules/
             },
             {
@@ -42,6 +43,10 @@ module.exports = {
             {
                 test: /^(.(?!\.spec))*\.ts$/,
                 loader: 'istanbul-instrumenter-loader',
+                exclude: [
+                    'node_modules',
+                    /\.(e2e|spec)\.ts$/
+                ]
             }
         ]
     },

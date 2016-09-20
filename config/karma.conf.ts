@@ -16,7 +16,6 @@ module.exports = function (config: any) {
             'karma-sourcemap-loader',
             'karma-webpack',
             'karma-coverage',
-            'karma-remap-istanbul',
             'karma-spec-reporter',
             'karma-chrome-launcher',
             'karma-phantomjs-launcher'
@@ -42,23 +41,17 @@ module.exports = function (config: any) {
             noInfo: true
         },
 
-        reporters: [ 'spec', 'coverage'/*, 'karma-remap-istanbul' */],
-
-        //remapIstanbulReporter: {
-        //    src: 'coverage/unit/chrome/coverage-final.json',
-        //    reports: {
-        //        html: 'coverage',
-        //    },
-        //},
+        reporters: [ 'spec', 'coverage' ],
 
         coverageReporter: {
-            reporters: [
-                { type: 'html' },
-            ],
-            dir: 'coverage/unit/',
+            dir: 'coverage/unit',
+            reporters: [ {
+                type: 'json'
+            } ],
             subdir: (browser: any) => {
                 return browser.toLowerCase().split(/[ /-]/)[ 0 ];
-            }
+            },
+            file: 'coverage.json'
         },
 
         port: 9876,
