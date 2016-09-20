@@ -18,7 +18,8 @@ module.exports = function (config: any) {
             'karma-coverage',
             'karma-spec-reporter',
             'karma-chrome-launcher',
-            'karma-phantomjs-launcher'
+            'karma-phantomjs-launcher',
+            'karma-htmlfile-reporter'
         ],
 
         files: [
@@ -41,7 +42,7 @@ module.exports = function (config: any) {
             noInfo: true
         },
 
-        reporters: [ 'spec', 'coverage' ],
+        reporters: [ 'spec', 'coverage', 'html' ],
 
         coverageReporter: {
             dir: 'coverage/unit',
@@ -52,6 +53,12 @@ module.exports = function (config: any) {
                 return browser.toLowerCase().split(/[ /-]/)[ 0 ];
             },
             file: 'coverage.json'
+        },
+
+        htmlReporter: {
+            outputFile: 'coverage/unit/testresult.html',
+            groupSuites: true,
+            useCompactStyle: true
         },
 
         port: 9876,
