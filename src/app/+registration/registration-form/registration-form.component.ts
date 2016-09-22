@@ -4,7 +4,7 @@
 
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { RegisteringUser } from "../../shared/registering-user";
 import { DynamicFormAbstractComponent } from '../../shared/components/dynamic-form.abstract.component';
@@ -18,20 +18,14 @@ import { ValidatorSet } from '../../shared/definitions/validator-set';
 })
 export class RegistrationFormComponent extends DynamicFormAbstractComponent implements OnInit {
 
-    constructor(private registrationService: RegistrationService, private router: Router,
+    constructor(private route: ActivatedRoute, private registrationService: RegistrationService, private router: Router,
                 private formBuilder: FormBuilder) {
         super();
     }
 
     @Output() error = new EventEmitter();
     heroes: string[] = [ 'Spidy Man', 'Suppa Man', 'Ban Man', 'Power Puff Girl', 'Circus Joker', 'Iron Lantern' ];
-    validatorSets: ValidatorSet[] = [ // These must be returned by the router's resolver
-        new ValidatorSet('username', [ Validators.required, Validators.minLength(5), Validators.maxLength(20) ]),
-        new ValidatorSet('password', [ Validators.required, Validators.minLength(3), Validators.maxLength(30) ]),
-        new ValidatorSet('favouriteHero', [ Validators.required ])
-    ];
-
-    model: RegistrationFormModel = new RegistrationFormModel(this.validatorSets); // To get upon resolve
+    model: RegistrationFormModel;
     registrationForm: FormGroup;
 
     register(form: FormGroup) {
@@ -52,8 +46,15 @@ export class RegistrationFormComponent extends DynamicFormAbstractComponent impl
     }
 
     ngOnInit(): void {
-        this.registrationForm = super.buildForm(this.formBuilder, this.model);
+        // Create the model after the validations have been retrieved from the server
+        this.route.data.forEach((data: {validations: ValidatorSet[]}) => {
+            if (!this.model) {
+                this.model = new RegistrationFormModel(data.validations);
+            }
+        });
 
+        // Build the registration form.
+        this.registrationForm = super.buildForm(this.formBuilder, this.model);
         this.registrationForm.valueChanges.subscribe(data => {
             let fields: Array<string> = Object.keys(data);
 

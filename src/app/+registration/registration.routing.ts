@@ -6,11 +6,15 @@ import { ModuleWithProviders } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 
 import { RegistrationComponent } from "./registration.component";
+import { RegistrationFormResolve } from './shared/registration-form-resolve.service';
 
 const registrationRoutes: Routes = [
     {
         path: '',
-        component: RegistrationComponent
+        component: RegistrationComponent,
+        resolve: {
+            validations: RegistrationFormResolve
+        }
     }
 ];
 
