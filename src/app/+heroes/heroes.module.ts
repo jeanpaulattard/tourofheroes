@@ -14,5 +14,5 @@ import { HeroDetailsComponent } from './hero-details/hero-details.component';
     imports: [ CommonModule, FormsModule, heroeRouting ],
     declarations: [ HeroesComponent, HeroDetailsComponent ]
 })
-export default class HeroesModule {
+export class HeroesModule {
 }

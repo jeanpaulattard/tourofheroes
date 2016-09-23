@@ -14,33 +14,13 @@ const appRoutes: Routes = [
         component: BaseProtectedComponent,
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-            {
-                path: 'heroes',
-                loadChildren: () => new Promise(resolve => (
-                    require as any).ensure([], () => resolve(require('./+heroes/heroes.module').default))
-                )
-            },
-            {
-                path: 'dashboard',
-                loadChildren: () => new Promise(resolve => (
-                    require as any).ensure([], () => resolve(require('./+dashboard/dashboard.module').default))
-                )
-            }
+            { path: 'heroes', loadChildren: './+heroes/heroes.module#HeroesModule' },
+            { path: 'dashboard', loadChildren: './+dashboard/dashboard.module#DashboardModule' }
         ],
         canActivate: [ AuthGuard ]
     },
-    {
-        path: 'registration',
-        loadChildren: () => new Promise(resolve => (
-            require as any).ensure([], () => resolve(require('./+registration/registration.module').default))
-        )
-    },
-    {
-        path: 'login',
-        loadChildren: () => new Promise(resolve =>
-            (require as any).ensure([], () => resolve(require('./+login/login.module').default))
-        )
-    }
+    { path: 'registration', loadChildren: './+registration/registration.module#RegistrationModule' },
+    { path: 'login', loadChildren: './+login/login.module#LoginModule' }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);

@@ -16,5 +16,5 @@ import { RegistrationFormResolve } from './shared/registration-form-resolve.serv
     declarations: [ RegistrationComponent, RegistrationFormComponent ],
     providers: [ RegistrationFormResolve, RegistrationService ]
 })
-export default class RegistrationModule {
+export class RegistrationModule {
 }

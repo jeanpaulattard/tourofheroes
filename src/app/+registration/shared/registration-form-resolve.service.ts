@@ -15,6 +15,6 @@ export class RegistrationFormResolve implements Resolve<ValidatorSet[]> {
             new ValidatorSet('username', [ Validators.required, Validators.minLength(5), Validators.maxLength(20) ]),
             new ValidatorSet('password', [ Validators.required, Validators.minLength(3), Validators.maxLength(30) ]),
             new ValidatorSet('favouriteHero', [ Validators.required ])
-        ]), 5000));
+        ]), 1000));
     }
 }

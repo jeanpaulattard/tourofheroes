@@ -16,5 +16,5 @@ import { SharedModule } from '../shared/shared.module';
     declarations: [ DashboardComponent, HeroSearchComponent ],
     providers: []
 })
-export default class DashboardModule {
+export class DashboardModule {
 }

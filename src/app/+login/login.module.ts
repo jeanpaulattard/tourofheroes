@@ -16,5 +16,5 @@ import { SharedModule } from '../shared/shared.module';
     declarations: [ LoginComponent, LoginFormComponent ],
     providers: [ LoginService ]
 })
-export default class LoginModule {
+export class LoginModule {
 }
