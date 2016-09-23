@@ -8,3 +8,4 @@ dist/
 coverage/
 !karma.conf.js
 config/karma.conf.js
+compiled/

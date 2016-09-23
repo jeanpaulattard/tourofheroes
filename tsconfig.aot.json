@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "exclude": [
+    "node_modules",
+    "src/compiled",
+    "src/**/*.spec.ts",
+    "src/**/*.e2e.ts",
+    "src/main.aot.ts"
+  ],
+  "angularCompilerOptions": {
+    "genDir": "compiled",
+    "skipMetadataEmit" : true
+  }
+}
