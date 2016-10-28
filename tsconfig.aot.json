@@ -15,10 +15,11 @@
   },
   "exclude": [
     "node_modules",
-    "src/compiled",
+    "compiled",
     "src/**/*.spec.ts",
     "src/**/*.e2e.ts",
-    "src/main.aot.ts"
+    "src/main.aot.ts",
+    "src/vendor.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "compiled",

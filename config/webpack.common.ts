@@ -1,7 +1,6 @@
 /**
  * Created by Jean-paul.attard on 06/09/2016.
  */
-
 var webpack = require('webpack');
 var HTMLWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -24,7 +23,7 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                use: [ 'awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader' ]
+                use: [ 'awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader?aot=true&genDir=compiled/src/app' ]
             },
             {
                 test: /\.html$/,
