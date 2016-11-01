@@ -1,15 +1,12 @@
 /**
  * Created by Jean-paul.attard on 06/09/2016.
  */
-
 var webpack = require('webpack');
 var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var commonConfig = require('./webpack.common');
 var helpers = require('./helpers');
-
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
 
 module.exports = webpackMerge(commonConfig, {
     devtool: 'source-map',
@@ -34,7 +31,7 @@ module.exports = webpackMerge(commonConfig, {
         new ExtractTextPlugin('[name].[hash].css'),
         new webpack.DefinePlugin({
             'process.env': {
-                'ENV': JSON.stringify(ENV)
+                'ENV': JSON.stringify(process.env.ENV)
             }
         })
     ]

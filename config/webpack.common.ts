@@ -7,11 +7,19 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var helpers = require('./helpers');
 
+const ENV = process.env.npm_lifecycle_event;
+process.env.AOT = ENV === 'build:aot' || ENV === 'server:aot';
+
+const PROD = ENV === 'build' || ENV === 'build:aot';
+if (PROD) {
+    process.env.ENV = 'production'
+}
+
 module.exports = {
     entry: {
         'polyfills': './src/polyfills',
         'vendor': './src/vendor',
-        'app': './src/main'
+        'app': process.env.AOT ? './src/main.aot' : './src/main'
     },
 
     resolve: {
@@ -23,7 +31,8 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                use: [ 'awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader?aot=true&genDir=compiled/src/app' ]
+                use: [ 'awesome-typescript-loader', 'angular2-template-loader', process.env.AOT ? 'angular2-router-loader?aot=true&genDir=compiled/src/app' :
+                                                                                'angular2-router-loader' ]
             },
             {
                 test: /\.html$/,
