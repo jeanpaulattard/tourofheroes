@@ -5,14 +5,9 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
-import { SEED_DATA } from 'angular2-in-memory-web-api';
-
 import { AppConfig, HeroDIConfig } from '../app.config';
-
 import { AuthenticationService } from './services/authentication.service';
 import { HeroService } from './services/hero.service';
-import { InMemoryDataService } from './services/in-memory-data.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { UsersService } from './services/users.service';
 import { TitleWrapperService } from './services/title-wrapper.service';
@@ -42,8 +37,7 @@ import { AuthGuard } from './services/route-guards/auth-guard.service';
     imports: [ BrowserModule, RouterModule ],
     providers: [ AuthenticationService, AuthGuard, HeroService, LocalStorageService, UsersService, Title,
                  TitleWrapperService,
-        { provide: AppConfig, useValue: HeroDIConfig },
-        { provide: SEED_DATA, useClass: InMemoryDataService }
+        { provide: AppConfig, useValue: HeroDIConfig }
     ],
     exports: [ BrowserModule ]
 })

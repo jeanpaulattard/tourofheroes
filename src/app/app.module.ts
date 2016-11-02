@@ -3,12 +3,8 @@
  */
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, XHRBackend } from '@angular/http';
-
-import { InMemoryBackendService } from 'angular2-in-memory-web-api/index';
-
+import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-
 import { routing } from './app.routing';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
@@ -17,10 +13,7 @@ import { BaseProtectedComponent } from './base-protected/base-protected.componen
 @NgModule({
     imports: [ CoreModule, FormsModule, HttpModule, routing, SharedModule ],
     declarations: [ AppComponent, BaseProtectedComponent ],
-    bootstrap: [ AppComponent ],
-    providers: [
-        { provide: XHRBackend, useClass: InMemoryBackendService }
-    ]
+    bootstrap: [ AppComponent ]
 })
 export class AppModule {
 }
