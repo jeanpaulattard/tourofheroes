@@ -14,8 +14,7 @@
     "coverage:remap": "remap-istanbul -i coverage/unit/phantomjs/coverage.json -o coverage/unit/phantomjs/coverage.json -t json -e node_modules,config/karma-test-shim.ts",
     "coverage:report": "istanbul report",
     "build": "rimraf dist && npm run webpack",
-    "build:aot": "npm run ngc && npm run webpack",
-    "postinstall": "typings install"
+    "build:aot": "npm run ngc && npm run webpack"
   },
   "repository": {
     "type": "git",
@@ -46,6 +45,9 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/jasmine": "^2.5.37",
+    "@types/node": "^6.0.45",
     "angular2-router-loader": "^0.3.3",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^2.2.4",
