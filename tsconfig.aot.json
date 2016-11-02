@@ -19,7 +19,8 @@
     "src/**/*.spec.ts",
     "src/**/*.e2e.ts",
     "src/main.aot.ts",
-    "src/vendor.ts"
+    "src/vendor.ts",
+    "src/polyfills.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "compiled",
