@@ -16,16 +16,15 @@ module.exports = {
     },
 
     resolve: {
-        extensions: [ '', '.ts', '.js' ],
-        root: helpers.root('src'),
-        modulesDirectories: [ 'node_modules' ]
+        extensions: [ '.ts', '.js' ],
+        modules: [ 'node_modules' ]
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loaders: [ 'awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader' ]
+                use: [ 'awesome-typescript-loader', 'angular2-template-loader', 'angular2-router-loader' ]
             },
             {
                 test: /\.html$/,
@@ -33,12 +32,22 @@ module.exports = {
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-                loader: 'file?name=assets/[name].[hash].[ext]'
+                loader: 'file',
+                options: {
+                    name: 'assets/[name].[hash].[ext]'
+                }
             },
             {
                 test: /\.css$/,
                 exclude: helpers.root('src', 'app'),
-                loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
+                loader: ExtractTextPlugin.extract({
+                    fallbackLoader: 'style',
+                    loader: [ {
+                        loader: 'css', options: {
+                            sourceMap: true
+                        }
+                    } ]
+                })
             },
             {
                 test: /\.css$/,
@@ -49,11 +58,13 @@ module.exports = {
     },
 
     plugins: [
+        new webpack.ContextReplacementPlugin(
+            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+            helpers.root('./src')
+        ),
         new webpack.optimize.CommonsChunkPlugin({
             name: [ 'app', 'vendor', 'polyfills' ]
         }),
-        new HTMLWebpackPlugin({
-            template: 'src/index.html'
-        })
+        new HTMLWebpackPlugin({ template: 'src/index.html' })
     ]
 };

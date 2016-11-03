@@ -21,19 +21,12 @@ module.exports = webpackMerge(commonConfig, {
         chunkFilename: '[id].[hash].chunk.js'
     },
 
-    htmlLoader: {
-        minimize: false
-    },
-
     plugins: [
         new webpack.NoErrorsPlugin(),
-        new webpack.optimize.DedupePlugin(),
         new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
             mangle: {
                 keep_fnames: true
-            },
-            compress: { // Hide warnings about potentially dangerous optimizations/code. Consider setting it to true for debugging purposes.
-                warnings: false
             },
             comments: false,
             beautify: false
