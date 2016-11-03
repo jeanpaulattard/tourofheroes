@@ -32,12 +32,11 @@ module.exports = webpackMerge(commonConfig, {
             mangle: {
                 keep_fnames: true
             },
-            compress: {
+            compress: { // Hide warnings about potentially dangerous optimizations/code. Consider setting it to true for debugging purposes.
                 warnings: false
             },
-            output: {
-                comments: false
-            }
+            comments: false,
+            beautify: false
         }),
         new ExtractTextPlugin('[name].[hash].css'),
         new webpack.DefinePlugin({
