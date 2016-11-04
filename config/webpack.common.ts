@@ -7,18 +7,15 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var helpers = require('./helpers');
 
-const ENV = process.env.npm_lifecycle_event;
-process.env.AOT = ENV === 'build:aot' || ENV === 'server:aot';
+const ENV = process.env.npm_config_env;
+const PROD = ENV === 'PROD' || ENV === 'PROD_AOT';
 
-const PROD = ENV === 'build' || ENV === 'build:aot';
-if (PROD) {
-    process.env.ENV = 'production'
-}
+process.env.AOT = ENV === 'PROD_AOT' || ENV === 'DEV_AOT';
+PROD ? process.env.ENV = 'production' : '';
 
 module.exports = {
     entry: {
         'polyfills': './src/polyfills',
-        //'vendor': './src/vendor',
         'app': process.env.AOT === 'true' ? './src/main.aot' : './src/main'
     },
 
@@ -81,7 +78,7 @@ module.exports = {
             helpers.root('./src')
         ),
         new webpack.optimize.CommonsChunkPlugin({
-            name: [ 'app', /*'vendor', */'polyfills' ]
+            name: [ 'app', 'polyfills' ]
         }),
         new HTMLWebpackPlugin({ template: 'src/index.html' })
     ]
