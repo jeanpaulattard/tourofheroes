@@ -4,7 +4,6 @@
   "description": "Angular 2 Tour of heroes tutorial",
   "main": "main.js",
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --port 4000",
     "ngc": "node_modules/.bin/ngc -p tsconfig.aot.json",
     "webpack": "webpack --config config/webpack.prod.js --progress --profile --bail",
     "pretest": "rimraf coverage/",
@@ -17,7 +16,9 @@
     "clean:compiled": "rimraf compiled/",
     "clean:dist": "rimraf dist/",
     "build": "npm run clean:dist && npm run webpack --env=PROD",
-    "build:aot": "npm run clean:all && npm run ngc && npm run webpack --env=PROD_AOT"
+    "build:aot": "npm run clean:all && npm run ngc && npm run webpack --env=PROD_AOT",
+    "dev": "webpack-dev-server --inline --progress --port 4000",
+    "dev:aot": "npm run clean:compiled && npm run ngc && npm run dev --env=DEV_AOT"
   },
   "repository": {
     "type": "git",
