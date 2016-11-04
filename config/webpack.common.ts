@@ -18,7 +18,7 @@ if (PROD) {
 module.exports = {
     entry: {
         'polyfills': './src/polyfills',
-        'vendor': './src/vendor',
+        //'vendor': './src/vendor',
         'app': process.env.AOT === 'true' ? './src/main.aot' : './src/main'
     },
 
@@ -81,7 +81,7 @@ module.exports = {
             helpers.root('./src')
         ),
         new webpack.optimize.CommonsChunkPlugin({
-            name: [ 'app', 'vendor', 'polyfills' ]
+            name: [ 'app', /*'vendor', */'polyfills' ]
         }),
         new HTMLWebpackPlugin({ template: 'src/index.html' })
     ]
