@@ -19,7 +19,7 @@ module.exports = {
     entry: {
         'polyfills': './src/polyfills',
         'vendor': './src/vendor',
-        'app':process.env.AOT === 'true' ? './src/main.aot' : './src/main'
+        'app': process.env.AOT === 'true' ? './src/main.aot' : './src/main'
     },
 
     resolve: {
@@ -31,8 +31,18 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                use: [ 'awesome-typescript-loader', 'angular2-template-loader', process.env.AOT === 'true' ? 'angular2-router-loader?aot=true&genDir=compiled/src/app' :
-                                                                                'angular2-router-loader' ]
+                use: [
+                    { loader: 'awesome-typescript-loader' },
+                    { loader: 'angular2-template-loader' },
+                    {
+                        loader: 'angular2-router-loader',
+                        options: {
+                            loader: 'system',
+                            aot: process.env.AOT === 'true' ? true : false,
+                            genDir: 'compiled/src/app'
+                        }
+                    }
+                ]
             },
             {
                 test: /\.html$/,
