@@ -1,6 +1,9 @@
 /**
  * Created by Jean-paul.attard on 09/09/2016.
  */
+/**
+ * Created by Jean-paul.attard on 09/09/2016.
+ */
 var webpack = require('webpack');
 var helpers = require('./helpers');
 
@@ -8,15 +11,29 @@ module.exports = {
     devtool: 'inline-source-map',
 
     resolve: {
-        extensions: [ '', '.ts', '.js' ]
+        extensions: [ '.ts', '.js' ]
     },
 
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.ts$/,
-                loaders: [ 'awesome-typescript-loader?sourceMap=false&inlineSourceMap=true',
-                           'angular2-template-loader' ],
+                use: [
+                    {
+                        loader: 'awesome-typescript-loader',
+                        options: {
+                            sourceMap: false,
+                            inlineSourceMap: true
+                        }
+                    },
+                    { loader: 'angular2-template-loader' },
+                    {
+                        loader: 'angular2-router-loader',
+                        options: {
+                            loader: 'system'
+                        }
+                    }
+                ],
                 exclude: /node_modules/
             },
             {
@@ -36,22 +53,24 @@ module.exports = {
                 test: /\.css$/,
                 include: helpers.root('src', 'app'),
                 loader: 'raw'
-            }
-        ],
-
-        postLoaders: [
+            },
             {
                 test: /^(.(?!\.spec))*\.ts$/,
                 loader: 'istanbul-instrumenter-loader',
                 exclude: [
                     'node_modules',
                     /\.(e2e|spec)\.ts$/
-                ]
+                ],
+                enforce: 'post'
             }
         ]
     },
 
     plugins: [
+        new webpack.ContextReplacementPlugin(
+            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+            helpers.root('./src')
+        ),
         new webpack.SourceMapDevToolPlugin({ filename: null, test: /\.ts$/ })
     ]
 };
