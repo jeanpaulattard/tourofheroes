@@ -2,9 +2,13 @@
  * Created by Jean-paul.attard on 13/09/2016.
  */
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
-import { AppModule } from './app.module';
 import { configureTests } from './test.config';
+import { appRoutes } from './app.routing';
+import { SharedModule } from './shared/shared.module';
+import { BaseProtectedComponent } from './base-protected/base-protected.component';
 
 describe('App Component', () => {
     let fixture: ComponentFixture<AppComponent>;
@@ -12,7 +16,8 @@ describe('App Component', () => {
     beforeEach(done => {
         const configure = (testBed: TestBed) => {
             testBed.configureTestingModule({
-                imports: [ AppModule ]
+                imports: [ SharedModule, RouterTestingModule.withRoutes(appRoutes) ],
+                declarations: [ AppComponent, BaseProtectedComponent ]
             });
         };
 

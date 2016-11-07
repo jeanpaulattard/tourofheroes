@@ -7,7 +7,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { BaseProtectedComponent } from './base-protected/base-protected.component';
 import { AuthGuard } from './core/services/route-guards/auth-guard.service';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
     { path: '', redirectTo: 'a', pathMatch: 'full' },
     {
         path: 'a',
