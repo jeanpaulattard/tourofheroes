@@ -8,6 +8,7 @@ var webpack = require('webpack');
 var helpers = require('./helpers');
 
 module.exports = {
+    entry: {},
     devtool: 'inline-source-map',
 
     resolve: {
