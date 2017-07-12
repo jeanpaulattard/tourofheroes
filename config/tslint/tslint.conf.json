@@ -1,0 +1,6 @@
+{
+  "extends": [ "./tslint.common.conf.json" ],
+  "rules": {
+    "max-classes-per-file": [ true, 1 ]
+  }
+}

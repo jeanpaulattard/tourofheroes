@@ -1,0 +1,4 @@
+{
+  "extends": "./config/tslint/tslint.conf.json",
+  "rules": { }
+}

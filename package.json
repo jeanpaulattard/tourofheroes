@@ -5,6 +5,10 @@
   "main": "main.js",
   "scripts": {
     "ngc": "node_modules/.bin/ngc -p tsconfig.aot.json",
+    "lint": "./node_modules/.bin/tslint -e src/app/**/*.spec.ts -e src/vendor.ts -c tslint.json src/**/*.ts",
+    "lint:spec": "./node_modules/.bin/tslint -c tslint.test.json src/app/**/*.spec.ts",
+    "lint:fix": "./node_modules/.bin/tslint -e src/app/**/*.spec.ts -e src/vendor.ts -c tslint.json --fix src/**/*.ts",
+    "lint:fix:spec": "./node_modules/.bin/tslint -c tslint.test.json --fix src/app/**/*.spec.ts",
     "webpack": "webpack --config config/webpack.prod.js --progress --profile --bail",
     "pretest": "rimraf coverage/",
     "test": "karma start",
@@ -17,7 +21,8 @@
     "clean:dist": "rimraf dist/",
     "build": "npm run clean:dist && npm run webpack --env=PROD",
     "build:aot": "npm run clean:all && npm run ngc && npm run webpack --env=PROD_AOT",
-    "dev": "webpack-dev-server --inline --progress --port 4000",
+    "dev:webpack": "webpack-dev-server --inline --progress --port 4000",
+    "dev": "npm run lint && npm run dev:webpack",
     "dev:aot": "npm run clean:compiled && npm run ngc && npm run dev --env=DEV_AOT"
   },
   "repository": {
@@ -56,6 +61,7 @@
     "angular2-router-loader": "^0.3.3",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^2.2.4",
+    "codelyzer": "2.0.0",
     "copy-webpack-plugin": "4.0.1",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
@@ -81,6 +87,7 @@
     "remap-istanbul": "^0.6.4",
     "rimraf": "^2.5.2",
     "style-loader": "^0.13.1",
+    "tslint": "4.4.2",
     "typescript": "2.0.3",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-server": "2.1.0-beta.10",
