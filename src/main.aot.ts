@@ -4,6 +4,7 @@
 
 import { enableProdMode } from '@angular/core';
 import { platformBrowser } from '@angular/platform-browser';
+import './rxjs.imports';
 
 import { AppModuleNgFactory } from '../compiled/src/app/app.module.ngfactory';
 
