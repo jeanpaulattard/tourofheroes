@@ -49,12 +49,14 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "@angular-cli/base-href-webpack": "1.0.16",
     "@types/core-js": "^0.9.34",
     "@types/jasmine": "^2.5.37",
     "@types/node": "^6.0.45",
     "angular2-router-loader": "^0.3.3",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^2.2.4",
+    "copy-webpack-plugin": "4.0.1",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "2.0.0-beta.4",
     "file-loader": "^0.9.0",

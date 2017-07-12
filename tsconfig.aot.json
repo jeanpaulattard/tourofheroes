@@ -3,6 +3,7 @@
     "target": "es5",
     "module": "commonjs",
     "moduleResolution": "node",
+    "lib": [ "es5", "dom", "scripthost", "es2015" ],
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -15,11 +16,12 @@
   "exclude": [
     "node_modules",
     "compiled",
+    "config",
     "src/**/*.spec.ts",
     "src/**/*.e2e.ts",
     "src/main.aot.ts",
-    "src/vendor.ts",
-    "src/polyfills.ts"
+    "src/polyfills.ts",
+    "src/test.config.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "compiled",

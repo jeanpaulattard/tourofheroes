@@ -4,6 +4,8 @@
 var webpack = require('webpack');
 var HTMLWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var baseHrefWebpack = require('@angular-cli/base-href-webpack');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 var helpers = require('./helpers');
 
@@ -36,7 +38,7 @@ module.exports = {
                         options: {
                             loader: 'system',
                             aot: process.env.AOT === 'true' ? true : false,
-                            genDir: 'compiled/src/app'
+                            genDir: 'compiled'
                         }
                     }
                 ]
@@ -74,12 +76,20 @@ module.exports = {
 
     plugins: [
         new webpack.ContextReplacementPlugin(
-            /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+            /@angular(\\|\/)core(\\|\/)@angular/,
             helpers.root('./src')
         ),
         new webpack.optimize.CommonsChunkPlugin({
             name: [ 'app', 'polyfills' ]
         }),
-        new HTMLWebpackPlugin({ template: 'src/index.html' })
-    ]
+        new HTMLWebpackPlugin({
+            template: 'src/index.html',
+            favicon: 'src/favicon.ico'
+        }),
+        new baseHrefWebpack.BaseHrefWebpackPlugin({ baseHref: '/' })
+        //new CopyWebpackPlugin([
+        //    {from: 'src/assets/i18n', to: 'assets/i18n'}
+        //])
+    ],
+    performance: { hints: false }
 };
